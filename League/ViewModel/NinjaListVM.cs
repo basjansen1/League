@@ -1,5 +1,8 @@
-﻿using System;
+using League.Model;
+using League.View;
+using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,39 +11,74 @@ namespace League.ViewModel
 {
     public class NinjaListVM : CrudObject<NinjaVM>
     {
+        private AddNinjaView _addNinjaView;
+        private EditNinjaView _editNinjaView;
+
+        public NinjaListVM()
+        {
+            base.ItemList = new System.Collections.ObjectModel.ObservableCollection<NinjaVM>();
+        }
+
         public override void AddItem()
         {
-            throw new NotImplementedException();
+            ItemVM = new NinjaVM();
+
+            using (var context = new LeagueNinjasDBEntities())
+            {
+                // Increment the id
+                ItemVM.Id = context.Ninjas.Max(i => i.Id) + 1;
+                ItemList.Add(ItemVM);
+
+                context.Ninjas.Add(ItemVM.ToModel());
+                context.SaveChanges();
+            }
+
+            HideAddWindow();
         }
 
         public override void DeleteItem()
         {
-            throw new NotImplementedException();
+            using (var context = new LeagueNinjasDBEntities())
+            {
+                context.Ninjas.Remove(SelectedItem.ToModel());
+                context.SaveChanges();
+            }
+
+            ItemList.Remove(SelectedItem);
         }
 
         public override void EditItem()
         {
-            throw new NotImplementedException();
-        }
+            using (var context = new LeagueNinjasDBEntities())
+            {
+                Ninja ninja = SelectedItem.ToModel();
+                context.Entry(ninja).State = EntityState.Modified;
+                context.SaveChanges();
+            }
 
-        public override void HideAddWindow()
-        {
-            throw new NotImplementedException();
-        }
-
-        public override void HideEditWindow()
-        {
-            throw new NotImplementedException();
+            HideEditWindow();
         }
 
         public override void ShowAddWindow()
         {
-            throw new NotImplementedException();
+            _addNinjaView = new AddNinjaView();
+            _addNinjaView.Show();
         }
 
         public override void ShowEditWindow()
         {
-            throw new NotImplementedException();
+            _editNinjaView = new EditNinjaView();
+            _editNinjaView.Show();
+        }
+
+        public override void HideAddWindow()
+        {
+            _addNinjaView.Hide();
+        }
+
+        public override void HideEditWindow()
+        {
+            _editNinjaView.Hide();
         }
     }
 }
