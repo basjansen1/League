@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-c:\users\bas\documents\visual studio 2015\Projects\League\League\obj\Debug\
+C:\Users\Gebruiker\Documents\Visual Studio 2015\Projects\League\League\obj\Debug\
 League
 none
 false
 DEBUG;TRACE
-c:\users\bas\documents\visual studio 2015\Projects\League\League\App.xaml
+C:\Users\Gebruiker\Documents\Visual Studio 2015\Projects\League\League\App.xaml
 9-1143660426
 21757298079
-34-554935657
-74595365015
+34372112170
+74-452335310
 MainWindow.xaml;View\AddCategoryView.xaml;View\AddEquipmentView.xaml;View\AddNinjaView.xaml;View\EditCategoryView.xaml;View\EditEquipmentView.xaml;View\EditNinjaView.xaml;View\InventoryView.xaml;View\MarketPlaceView.xaml;
 
-False
+True
 
