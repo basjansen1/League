@@ -23,7 +23,7 @@ namespace League.ViewModel
                 base.RaisePropertyChanged();
             }
         }
-        ObservableCollection<T> ItemList { get; set; }
+        protected ObservableCollection<T> ItemList { get; set; }
 
         // Commands
         ICommand AddCommand { get; set; }
@@ -48,5 +48,7 @@ namespace League.ViewModel
         public abstract void DeleteItem();
         public abstract void ShowAddWindow();
         public abstract void ShowEditWindow();
+        public abstract void HideAddWindow();
+        public abstract void HideEditWindow();
     }
 }
