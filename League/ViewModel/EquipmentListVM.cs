@@ -10,7 +10,11 @@ namespace League.ViewModel
     {
         public override void AddItem()
         {
-            throw new NotImplementedException();
+            ItemList.Add(SelectedItem);
+
+            using (var context = new LeagueNinjasDBEntities())
+            {
+            }
         }
 
         public override void DeleteItem()

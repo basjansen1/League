@@ -1,4 +1,5 @@
-﻿using System;
+﻿using League.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -31,6 +32,11 @@ namespace League.ViewModel
         public override void ShowEditWindow()
         {
             throw new NotImplementedException();
+        }
+
+        public void GetEquipmentOfCategory(Category category)
+        {
+            
         }
     }
 }

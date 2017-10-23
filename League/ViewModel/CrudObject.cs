@@ -23,7 +23,7 @@ namespace League.ViewModel
                 base.RaisePropertyChanged();
             }
         }
-        ObservableCollection<T> ItemList { get; set; }
+        protected ObservableCollection<T> ItemList { get; set; }
 
         // Commands
         ICommand AddCommand { get; set; }
