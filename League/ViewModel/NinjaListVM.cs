@@ -23,12 +23,12 @@ namespace League.ViewModel
             throw new NotImplementedException();
         }
 
-        public void HideAddWindow()
+        public override void HideAddWindow()
         {
             throw new NotImplementedException();
         }
 
-        public void HideEditWindow()
+        public override void HideEditWindow()
         {
             throw new NotImplementedException();
         }

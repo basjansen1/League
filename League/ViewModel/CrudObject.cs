@@ -48,5 +48,7 @@ namespace League.ViewModel
         public abstract void DeleteItem();
         public abstract void ShowAddWindow();
         public abstract void ShowEditWindow();
+        public abstract void HideAddWindow();
+        public abstract void HideEditWindow();
     }
 }

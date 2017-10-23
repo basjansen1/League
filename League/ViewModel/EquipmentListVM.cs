@@ -49,12 +49,12 @@ namespace League.ViewModel
             HideEditWindow();
         }
 
-        public void HideAddWindow()
+        public override void HideAddWindow()
         {
             _addEquipmentView.Hide();
         }
 
-        public void HideEditWindow()
+        public override void HideEditWindow()
         {
             _editEquipmentView.Hide();
         }
