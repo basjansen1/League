@@ -38,5 +38,15 @@ namespace League.ViewModel
         {
             
         }
+
+        public void HideAddWindow()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void HideEditWindow()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

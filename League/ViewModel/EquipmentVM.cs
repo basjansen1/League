@@ -88,7 +88,7 @@ namespace League.ViewModel
             }
         }
 
-        public Equipment ToModel(EquipmentVM equipmentVM)
+        public Equipment ToModel()
         {
             return _equipment;
         }

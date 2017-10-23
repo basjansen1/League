@@ -116,7 +116,6 @@
     <Compile Include="ViewModel\EquipmentListVM.cs" />
     <Compile Include="ViewModel\EquipmentVM.cs" />
     <Compile Include="ViewModel\InventoryVM.cs" />
-    <Compile Include="ViewModel\LeagueNinjasDBEntities.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\MarketPlaceVM.cs" />
     <Compile Include="ViewModel\NinjaListVM.cs" />
