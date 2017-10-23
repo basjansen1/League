@@ -48,3 +48,6 @@ c:\users\bas\documents\visual studio 2015\Projects\League\League\bin\Debug\Entit
 c:\users\bas\documents\visual studio 2015\Projects\League\League\bin\Debug\EntityFramework.xml
 c:\users\bas\documents\visual studio 2015\Projects\League\League\bin\Debug\EntityFramework.SqlServer.xml
 c:\users\bas\documents\visual studio 2015\Projects\League\League\obj\Debug\League_Content.g.cs
+C:\Users\Gebruiker\Documents\Visual Studio 2015\Projects\League\League\bin\Debug\League.exe.config
+C:\Users\Gebruiker\Documents\Visual Studio 2015\Projects\League\League\obj\Debug\League.exe
+C:\Users\Gebruiker\Documents\Visual Studio 2015\Projects\League\League\obj\Debug\League.pdb
