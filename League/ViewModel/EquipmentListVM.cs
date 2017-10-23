@@ -11,11 +11,12 @@ namespace League.ViewModel
 {
     public class EquipmentListVM : CrudObject<EquipmentVM>
     {
+        AddEquipmentView _addEquipmentView;
+        EditEquipmentView _editEquipmentView;
         public override void AddItem()
         {
             // ToDo: Bind selected category to ItemVM
             ItemVM = new EquipmentVM();
-            this.ShowAddWindow();
 
             using (var context = new LeagueNinjasDBEntities())
             {
@@ -39,8 +40,6 @@ namespace League.ViewModel
 
         public override void EditItem()
         {
-            ShowEditWindow();
-
             using (var context = new LeagueNinjasDBEntities())
             {
                 Equipment equipment = SelectedItem.ToModel();
@@ -52,23 +51,24 @@ namespace League.ViewModel
 
         public void HideAddWindow()
         {
-            throw new NotImplementedException();
+            _addEquipmentView.Hide();
         }
 
         public void HideEditWindow()
         {
-            throw new NotImplementedException();
+            _editEquipmentView.Hide();
         }
 
         public override void ShowAddWindow()
         {
-            AddEquipmentView equipmentView = new AddEquipmentView();
-            equipmentView.Show();
+            _addEquipmentView = new AddEquipmentView();
+            _addEquipmentView.Show();
         }
 
         public override void ShowEditWindow()
         {
-            throw new NotImplementedException();
+            _editEquipmentView = new EditEquipmentView();
+            _editEquipmentView.Show();
         }
 
         public List<Equipment> getEquipmentsByCategory(Category category)
