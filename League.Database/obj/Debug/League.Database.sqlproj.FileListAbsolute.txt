@@ -1,0 +1,5 @@
+c:\Users\Bas\documents\visual studio 2015\Projects\League\League.Database\bin\Debug\League.Database.dacpac
+c:\Users\Bas\documents\visual studio 2015\Projects\League\League.Database\obj\Debug\League.Database.dll
+c:\Users\Bas\documents\visual studio 2015\Projects\League\League.Database\obj\Debug\League.Database.pdb
+c:\Users\Bas\documents\visual studio 2015\Projects\League\League.Database\bin\Debug\League.Database.dll
+c:\Users\Bas\documents\visual studio 2015\Projects\League\League.Database\bin\Debug\League.Database.pdb

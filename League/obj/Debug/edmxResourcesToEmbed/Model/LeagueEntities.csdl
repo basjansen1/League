@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="LeagueNinjasDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Category">
+    <Key>
+      <PropertyRef Name="Name" />
+    </Key>
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Equipments" Relationship="Self.FK_Equipment_Category" FromRole="Category" ToRole="Equipment" />
+  </EntityType>
+  <EntityType Name="Equipment">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Strength" Type="Int32" Nullable="false" />
+    <Property Name="Intelligence" Type="Int32" Nullable="false" />
+    <Property Name="Agility" Type="Int32" Nullable="false" />
+    <Property Name="Price" Type="Int32" Nullable="false" />
+    <Property Name="Category" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Category1" Relationship="Self.FK_Equipment_Category" FromRole="Equipment" ToRole="Category" />
+    <NavigationProperty Name="Ninjas" Relationship="Self.NinjaInventory" FromRole="Equipment" ToRole="Ninja" />
+  </EntityType>
+  <EntityType Name="Ninja">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="AmountGold" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Equipments" Relationship="Self.NinjaInventory" FromRole="Ninja" ToRole="Equipment" />
+  </EntityType>
+  <Association Name="FK_Equipment_Category">
+    <End Role="Category" Type="Self.Category" Multiplicity="1" />
+    <End Role="Equipment" Type="Self.Equipment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Category">
+        <PropertyRef Name="Name" />
+      </Principal>
+      <Dependent Role="Equipment">
+        <PropertyRef Name="Category" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="NinjaInventory">
+    <End Role="Equipment" Type="Self.Equipment" Multiplicity="*" />
+    <End Role="Ninja" Type="Self.Ninja" Multiplicity="*" />
+  </Association>
+  <EntityContainer Name="LeagueNinjasDBEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Categories" EntityType="Self.Category" />
+    <EntitySet Name="Equipments" EntityType="Self.Equipment" />
+    <EntitySet Name="Ninjas" EntityType="Self.Ninja" />
+    <AssociationSet Name="FK_Equipment_Category" Association="Self.FK_Equipment_Category">
+      <End Role="Category" EntitySet="Categories" />
+      <End Role="Equipment" EntitySet="Equipments" />
+    </AssociationSet>
+    <AssociationSet Name="NinjaInventory" Association="Self.NinjaInventory">
+      <End Role="Equipment" EntitySet="Equipments" />
+      <End Role="Ninja" EntitySet="Ninjas" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

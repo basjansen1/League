@@ -1,0 +1,30 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "League", "League\League.csproj", "{83F5E934-3732-4D40-B999-B251D4CDD347}"
+EndProject
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "League.Database", "League.Database\League.Database.sqlproj", "{382532CB-CA5E-4235-B995-E8AF00E36696}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{83F5E934-3732-4D40-B999-B251D4CDD347}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{83F5E934-3732-4D40-B999-B251D4CDD347}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{83F5E934-3732-4D40-B999-B251D4CDD347}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{83F5E934-3732-4D40-B999-B251D4CDD347}.Release|Any CPU.Build.0 = Release|Any CPU
+		{382532CB-CA5E-4235-B995-E8AF00E36696}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{382532CB-CA5E-4235-B995-E8AF00E36696}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{382532CB-CA5E-4235-B995-E8AF00E36696}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{382532CB-CA5E-4235-B995-E8AF00E36696}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{382532CB-CA5E-4235-B995-E8AF00E36696}.Release|Any CPU.Build.0 = Release|Any CPU
+		{382532CB-CA5E-4235-B995-E8AF00E36696}.Release|Any CPU.Deploy.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
