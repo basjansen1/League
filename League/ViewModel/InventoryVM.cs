@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace League.ViewModel
 {
-    class InventoryVM
+    public class InventoryVM
     {
     }
 }

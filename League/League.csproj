@@ -110,6 +110,7 @@
     <Compile Include="Model\Ninja.cs">
       <DependentUpon>LeagueEntities.tt</DependentUpon>
     </Compile>
+    <Compile Include="Utils\GoldConverter.cs" />
     <Compile Include="ViewModel\CategoryListVM.cs" />
     <Compile Include="ViewModel\CategoryVM.cs" />
     <Compile Include="ViewModel\CrudObject.cs" />

@@ -43,6 +43,16 @@ namespace League.ViewModel
             }
         }
 
+        public string Name
+        {
+            get { return _ninja.Name; }
+            set
+            {
+                _ninja.Name = value;
+                base.RaisePropertyChanged();
+            }
+        }
+
         public Ninja ToModel()
         {
             return _ninja;
