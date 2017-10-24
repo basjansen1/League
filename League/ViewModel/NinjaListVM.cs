@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 
 namespace League.ViewModel
 {
+    // MainVM
     public class NinjaListVM : CrudObject<NinjaVM>
     {
         private AddNinjaView _addNinjaView;
