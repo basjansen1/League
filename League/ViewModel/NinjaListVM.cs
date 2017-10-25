@@ -6,6 +6,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace League.ViewModel
 {
@@ -18,6 +19,19 @@ namespace League.ViewModel
         public NinjaListVM()
         {
             base.ItemList = new System.Collections.ObjectModel.ObservableCollection<NinjaVM>();
+
+            using (var context = new LeagueNinjasDBEntities())
+            {
+                context.Ninjas.ToList().ForEach(n => ItemList.Add(new NinjaVM(n))); // Do by all VM Lists
+            }
+
+            if (ItemList.Count == 0)
+            {
+                MessageBox.Show("Not worked");
+            } else
+            {
+                MessageBox.Show("Worked");
+            }
         }
 
         public override void AddItem()

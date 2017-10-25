@@ -42,14 +42,14 @@ namespace League.ViewModel
             ////    SimpleIoc.Default.Register<IDataService, DataService>();
             ////}
 
-            SimpleIoc.Default.Register<MainViewModel>();
+            SimpleIoc.Default.Register<NinjaListVM>();
         }
 
-        public MainViewModel Main
+        public NinjaListVM GetNinjaList
         {
             get
             {
-                return ServiceLocator.Current.GetInstance<MainViewModel>();
+                return ServiceLocator.Current.GetInstance<NinjaListVM>();
             }
         }
         
