@@ -111,9 +111,17 @@
       <DependentUpon>LeagueEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Utils\GoldConverter.cs" />
+    <Compile Include="ViewModel\AddCategoryVM.cs" />
+    <Compile Include="ViewModel\AddEquipmentVM.cs" />
+    <Compile Include="ViewModel\AddNinjaVM.cs" />
+    <Compile Include="ViewModel\AddVM.cs" />
     <Compile Include="ViewModel\CategoryListVM.cs" />
     <Compile Include="ViewModel\CategoryVM.cs" />
     <Compile Include="ViewModel\CrudObject.cs" />
+    <Compile Include="ViewModel\EditCategoryVM.cs" />
+    <Compile Include="ViewModel\EditEquipmentVM.cs" />
+    <Compile Include="ViewModel\EditNinjaVM.cs" />
+    <Compile Include="ViewModel\EditVM.cs" />
     <Compile Include="ViewModel\EquipmentListVM.cs" />
     <Compile Include="ViewModel\EquipmentVM.cs" />
     <Compile Include="ViewModel\InventoryVM.cs" />
