@@ -13,7 +13,6 @@ namespace League.ViewModel
     public abstract class CrudObject <T> : ViewModelBase
     {
         private T _selectedItem;
-        public T ItemVM { get; set; } // intented for adding an item
         public T SelectedItem
         {
             get { return _selectedItem; }
@@ -23,7 +22,7 @@ namespace League.ViewModel
                 base.RaisePropertyChanged();
             }
         }
-        protected ObservableCollection<T> ItemList { get; set; }
+        public ObservableCollection<T> ItemList { get; set; }
 
         // Commands
         ICommand AddCommand { get; set; }
@@ -36,15 +35,11 @@ namespace League.ViewModel
         {
             ItemList = new ObservableCollection<T>();
 
-            AddCommand = new RelayCommand(AddItem);
-            EditCommand = new RelayCommand(EditItem);
             DeleteCommand = new RelayCommand(DeleteItem);
             ShowAddCommand = new RelayCommand(ShowAddWindow);
             ShowEditCommand = new RelayCommand(ShowEditWindow);
         }
 
-        public abstract void AddItem();
-        public abstract void EditItem();
         public abstract void DeleteItem();
         public abstract void ShowAddWindow();
         public abstract void ShowEditWindow();
