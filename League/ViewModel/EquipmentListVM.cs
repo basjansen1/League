@@ -23,17 +23,6 @@ namespace League.ViewModel
             ItemList.Remove(SelectedItem);
         }
 
-        public override void EditItem()
-        {
-            using (var context = new LeagueNinjasDBEntities())
-            {
-                Equipment equipment = SelectedItem.ToModel();
-                context.Entry(equipment).State = EntityState.Modified;
-                context.SaveChanges();
-            }
-            HideEditWindow();
-        }
-
         public override void HideAddWindow()
         {
             _addEquipmentView.Hide();

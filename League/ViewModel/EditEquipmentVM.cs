@@ -27,6 +27,7 @@ namespace League.ViewModel
                     context.SaveChanges();
                 }
             }
+            window.Close();
         }
 
         public override bool CanEdit()
