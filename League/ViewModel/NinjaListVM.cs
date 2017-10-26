@@ -25,23 +25,6 @@ namespace League.ViewModel
             
         }
 
-        public override void AddItem()
-        {
-            ItemVM = new NinjaVM();
-
-            using (var context = new LeagueNinjasDBEntities())
-            {
-                // Increment the id
-                ItemVM.Id = context.Ninjas.Max(i => i.Id) + 1;
-                ItemList.Add(ItemVM);
-
-                context.Ninjas.Add(ItemVM.ToModel());
-                context.SaveChanges();
-            }
-
-            HideAddWindow();
-        }
-
         public override void DeleteItem()
         {
             using (var context = new LeagueNinjasDBEntities())
@@ -51,18 +34,6 @@ namespace League.ViewModel
             }
 
             ItemList.Remove(SelectedItem);
-        }
-
-        public override void EditItem()
-        {
-            using (var context = new LeagueNinjasDBEntities())
-            {
-                Ninja ninja = SelectedItem.ToModel();
-                context.Entry(ninja).State = EntityState.Modified;
-                context.SaveChanges();
-            }
-
-            HideEditWindow();
         }
 
         public override void ShowAddWindow()
