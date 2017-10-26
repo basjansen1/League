@@ -28,7 +28,7 @@ namespace League.ViewModel
 
         public override bool CanAdd()
         {
-            throw new NotImplementedException();
+            return true;
         }
     }
 }
