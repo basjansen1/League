@@ -12,6 +12,7 @@ namespace League.ViewModel
 {
     public class EditEquipmentVM : EditVM<EquipmentVM, EditEquipmentView>
     {
+        public string ItemToEditCategory { get; set; }
         public EditEquipmentVM(EquipmentVM Item) : base(Item)
         {
         }
@@ -32,7 +33,7 @@ namespace League.ViewModel
 
         public override bool CanEdit()
         {
-            if(ItemToBeEdited.Name != null)
+            if(ItemToBeEdited.Name != null && ItemToEditCategory == null)
             {
                 return true;
             } else
