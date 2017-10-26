@@ -36,7 +36,7 @@ namespace League.ViewModel
                 return true;
             } else
             {
-                MessageBox.Show("You have to gve a name to the equipment!");
+                MessageBox.Show("You have to give a name to the equipment!");
                 return false;
             }
         }

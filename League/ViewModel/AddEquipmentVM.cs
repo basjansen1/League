@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace League.ViewModel
 {
@@ -28,7 +29,14 @@ namespace League.ViewModel
 
         public override bool CanAdd()
         {
-            return true;
+            if (NewItem.Name != null)
+            {
+                return true;
+            } else
+            {
+                MessageBox.Show("You have to give a name to the equipment!");
+                return false;
+            }
         }
     }
 }
