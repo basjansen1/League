@@ -14,7 +14,12 @@ namespace League.ViewModel
         private EditCategoryView _editView;
         public override void DeleteItem()
         {
-            throw new NotImplementedException();
+            using (var context = new LeagueNinjasDBEntities())
+            {
+                context.Categories.Remove(SelectedItem.ToModel());
+                context.SaveChanges();
+            }
+            ItemList.Remove(SelectedItem);
         }
 
         public override void ShowAddWindow()
@@ -29,9 +34,15 @@ namespace League.ViewModel
             _editView.Show();
         }
 
-        public void GetEquipmentOfCategory(Category category)
+        public List<EquipmentVM> GetEquipmentOfCategory(string category)
         {
-            
+            List<EquipmentVM> equipmentList;
+
+            using (var context = new LeagueNinjasDBEntities())
+            {
+                equipmentList = context.Equipments.Where(e => e.Category.Equals(category)).Select(s => new EquipmentVM(s)).ToList();
+            }
+            return equipmentList;
         }
 
         public override void HideAddWindow()
