@@ -1,4 +1,5 @@
 ﻿using League.Model;
+using League.View;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,29 +10,23 @@ namespace League.ViewModel
 {
     public class CategoryListVM : CrudObject<CategoryVM>
     {
-        public override void AddItem()
-        {
-            throw new NotImplementedException();
-        }
-
+        private AddCategoryView _addView;
+        private EditCategoryView _editView;
         public override void DeleteItem()
-        {
-            throw new NotImplementedException();
-        }
-
-        public override void EditItem()
         {
             throw new NotImplementedException();
         }
 
         public override void ShowAddWindow()
         {
-            throw new NotImplementedException();
+            _addView = new AddCategoryView();
+            _addView.Show();
         }
 
         public override void ShowEditWindow()
         {
-            throw new NotImplementedException();
+            _editView = new EditCategoryView();
+            _editView.Show();
         }
 
         public void GetEquipmentOfCategory(Category category)
@@ -41,12 +36,12 @@ namespace League.ViewModel
 
         public override void HideAddWindow()
         {
-            throw new NotImplementedException();
+            _addView.Close();
         }
 
         public override void HideEditWindow()
         {
-            throw new NotImplementedException();
+            _editView.Close();
         }
     }
 }

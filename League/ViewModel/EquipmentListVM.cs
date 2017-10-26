@@ -13,21 +13,6 @@ namespace League.ViewModel
     {
         AddEquipmentView _addEquipmentView;
         EditEquipmentView _editEquipmentView;
-        public override void AddItem()
-        {
-            // ToDo: Bind selected category to ItemVM
-            ItemVM = new EquipmentVM();
-
-            using (var context = new LeagueNinjasDBEntities())
-            {
-                ItemVM.Id = context.Equipments.Max(i => i.Id) + 1; // Get the highest ID and increment this
-                ItemList.Add(ItemVM);
-                context.Equipments.Add(ItemVM.ToModel());
-                context.SaveChanges();
-            }
-            HideAddWindow();
-        }
-
         public override void DeleteItem()
         {
             using (var context = new LeagueNinjasDBEntities())
@@ -36,17 +21,6 @@ namespace League.ViewModel
                 context.SaveChanges();
             }
             ItemList.Remove(SelectedItem);
-        }
-
-        public override void EditItem()
-        {
-            using (var context = new LeagueNinjasDBEntities())
-            {
-                Equipment equipment = SelectedItem.ToModel();
-                context.Entry(equipment).State = EntityState.Modified;
-                context.SaveChanges();
-            }
-            HideEditWindow();
         }
 
         public override void HideAddWindow()
