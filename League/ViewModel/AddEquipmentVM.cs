@@ -10,6 +10,7 @@ namespace League.ViewModel
 {
     public class AddEquipmentVM : AddVM<EquipmentListVM, EquipmentVM>
     {
+        public string NewItemCategory { get; set; }
         public AddEquipmentVM(EquipmentListVM ViewModelList) : base(ViewModelList)
         { 
             NewItem = new EquipmentVM();
@@ -29,14 +30,24 @@ namespace League.ViewModel
 
         public override bool CanAdd()
         {
-            if (NewItem.Name != null)
-            {
-                return true;
-            } else
+            if (NewItem.Name == null)
             {
                 MessageBox.Show("You have to give a name to the equipment!");
                 return false;
             }
+
+            if (NewItemCategory != null)
+                {
+                    MessageBox.Show("You have to assign a category!");
+                    return false;
+                } else if (!NewItem.SetCategory(NewItemCategory))
+                {
+                    MessageBox.Show("The chosen category does not excists!");
+                    return false;
+                } else
+                {
+                    return true;
+                }
         }
     }
 }

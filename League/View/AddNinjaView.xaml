@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:League.View"
         mc:Ignorable="d"
         Title="AddNinjaView" Height="300" Width="300">
-    <Grid>
-        
-    </Grid>
+    <StackPanel>
+        <TextBlock FontSize="30">AddNinjaView</TextBlock>
+    </StackPanel>
 </Window>

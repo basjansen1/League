@@ -1,3 +1,4 @@
+using GalaSoft.MvvmLight.Command;
 using League.Model;
 using League.View;
 using System;
@@ -7,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Input;
 
 namespace League.ViewModel
 {
@@ -22,14 +24,13 @@ namespace League.ViewModel
             {
                 context.Ninjas.ToList().ForEach(n => ItemList.Add(new NinjaVM(n))); // Do by all VM Lists
             }
-            
         }
 
         public override void DeleteItem()
         {
             using (var context = new LeagueNinjasDBEntities())
             {
-                context.Ninjas.Remove(SelectedItem.ToModel());
+                context.Ninjas.Where(n => n.Id == SelectedItem.Id).ToList().ForEach(s => context.Ninjas.Remove(s));
                 context.SaveChanges();
             }
 

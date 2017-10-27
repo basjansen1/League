@@ -52,6 +52,11 @@ namespace League.ViewModel
                 return ServiceLocator.Current.GetInstance<NinjaListVM>();
             }
         }
+
+        public AddNinjaVM GetAddNinjaVM()
+        {
+            return new AddNinjaVM(GetNinjaList);
+        }
         
         public static void Cleanup()
         {

@@ -106,5 +106,23 @@ namespace League.ViewModel
         {
             _equipment = equipment;
         }
+
+        public bool SetCategory(string name)
+        {
+            Category category = new Category();
+            category.Name = name;
+
+            using (var context = new LeagueNinjasDBEntities())
+            {
+                if (context.Categories.Contains(category))
+                {
+                 //   _equipment.
+                    return true;
+                } else
+                {
+                    return false;
+                }
+            }
+        }
     }
 }
