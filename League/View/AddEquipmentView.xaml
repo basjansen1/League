@@ -5,8 +5,22 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:League.View"
         mc:Ignorable="d"
-        Title="AddEquipmentView" Height="300" Width="300">
-    <Grid>
-        
-    </Grid>
+        Title="AddEquipmentView" Height="300" Width="300"
+        DataContext="{Binding GetAddEquipmentVM, Source= {StaticResource Locator}}">
+    <StackPanel>
+        <TextBlock FontSize="30">AddEquipmentView</TextBlock>
+        <TextBlock TextAlignment="Center" FontSize="12">Name</TextBlock>
+        <TextBox Text="{Binding TextName }" TextAlignment="Center"></TextBox>
+        <TextBlock TextAlignment="Center" FontSize="12">Strength</TextBlock>
+        <TextBox Text="{Binding TextStrength }" TextAlignment="Center"></TextBox>
+        <TextBlock TextAlignment="Center" FontSize="12">Intelligence</TextBlock>
+        <TextBox Text="{Binding TextIntelligence }" TextAlignment="Center"></TextBox>
+        <TextBlock TextAlignment="Center" FontSize="12">Agility</TextBlock>
+        <TextBox Text="{Binding TextAgility}" TextAlignment="Center"></TextBox>
+        <TextBlock TextAlignment="Center" FontSize="12">Price</TextBlock>
+        <TextBox Text="{Binding TextPrice }" TextAlignment="Center"></TextBox>
+        <TextBlock TextAlignment="Center" FontSize="12">Category</TextBlock>
+        <TextBox Text="{Binding TextCategory}" TextAlignment="Center"></TextBox>
+        <Button Command="{Binding AddEquipment }" CommandParameter="{Binding AddEquipment }">Save equipment</Button>
+    </StackPanel>
 </Window>
