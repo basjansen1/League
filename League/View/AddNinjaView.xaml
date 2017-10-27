@@ -9,7 +9,10 @@
         DataContext="{Binding GetAddNinjaVM, Source= {StaticResource Locator}}">
     <StackPanel>
         <TextBlock FontSize="30">AddNinjaView</TextBlock>
-        <TextBox TextAlignment="Center">Name</TextBox>
-        <Button Command="{Binding DataContext.AddCommand, RelativeSource={RelativeSource Self}}">"Save ninja"</Button>
+        <TextBlock TextAlignment="Center" FontSize="12">Ninja name</TextBlock>
+        <TextBox Text="{Binding NameText}" TextAlignment="Center"></TextBox>
+        <TextBlock TextAlignment="Center" FontSize="12">Gold worth</TextBlock>
+        <TextBox Text="{Binding AmountGoldText}" TextAlignment="Center"></TextBox>
+        <Button Command="{Binding AddNinjaCommand}" CommandParameter="{Binding AddNinjaCommand}">Save ninja</Button>
     </StackPanel>
 </Window>
