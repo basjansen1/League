@@ -25,11 +25,11 @@ namespace League.ViewModel
         public ObservableCollection<T> ItemList { get; set; }
 
         // Commands
-        ICommand AddCommand { get; set; }
-        ICommand EditCommand { get; set; }
-        ICommand DeleteCommand { get; set; }
-        ICommand ShowAddCommand { get; set; }
-        ICommand ShowEditCommand { get; set; }
+        public ICommand AddCommand { get; set; }
+        public ICommand EditCommand { get; set; }
+        public ICommand DeleteCommand { get; set; }
+        public ICommand ShowAddCommand { get; set; }
+        public ICommand ShowEditCommand { get; set; }
 
         public CrudObject()
         {
