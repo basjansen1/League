@@ -1,4 +1,5 @@
-﻿using League.Model;
+﻿using GalaSoft.MvvmLight.Command;
+using League.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,10 +16,16 @@ namespace League.ViewModel
         {
             NewItem = new NinjaVM();
             VMList = ViewModelList;
+
+            AddCommand = new RelayCommand(AddItem);
+            MessageBox.Show("NASI");
         }
 
         public override void AddItem()
         {
+            if (!CanAdd())
+                return;
+
             using (var context = new LeagueNinjasDBEntities())
             {
                 NewItem.Id = context.Equipments.Max(i => i.Id) + 1; // Get the highest ID and increment this

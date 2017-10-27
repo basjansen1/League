@@ -5,8 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:League.View"
         mc:Ignorable="d"
-        Title="AddNinjaView" Height="300" Width="300">
+        Title="AddNinjaView" Height="300" Width="300"
+        DataContext="{Binding GetAddNinjaVM, Source= {StaticResource Locator}}">
     <StackPanel>
         <TextBlock FontSize="30">AddNinjaView</TextBlock>
+        <TextBox TextAlignment="Center">Name</TextBox>
+        <Button Command="{Binding DataContext.AddCommand, RelativeSource={RelativeSource Self}}">"Save ninja"</Button>
     </StackPanel>
 </Window>
