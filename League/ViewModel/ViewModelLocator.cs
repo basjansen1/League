@@ -45,6 +45,7 @@ namespace League.ViewModel
             SimpleIoc.Default.Register<NinjaListVM>();
             SimpleIoc.Default.Register<AddNinjaVM>();
             SimpleIoc.Default.Register<AddEquipmentVM>();
+            SimpleIoc.Default.Register<AddCategoryVM>();
         }
 
         public NinjaListVM GetNinjaList
@@ -71,6 +72,13 @@ namespace League.ViewModel
             }
         }
 
+        public AddCategoryVM GetAddCategoryVM
+        {
+            get
+            {
+                return ServiceLocator.Current.GetInstance<AddCategoryVM>();
+            }
+        }
 
         public static void Cleanup()
         {
