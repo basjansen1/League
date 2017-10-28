@@ -1,4 +1,5 @@
-﻿using League.Model;
+﻿using GalaSoft.MvvmLight.Command;
+using League.Model;
 using League.View;
 using System;
 using System.Collections.Generic;
@@ -7,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Input;
 
 namespace League.ViewModel
 {

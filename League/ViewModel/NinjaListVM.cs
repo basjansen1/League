@@ -46,6 +46,7 @@ namespace League.ViewModel
         public override void ShowEditWindow()
         {
             _editNinjaView = new EditNinjaView();
+            new EditNinjaVM(SelectedItem);
             _editNinjaView.Show();
         }
 

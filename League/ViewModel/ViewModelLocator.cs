@@ -93,6 +93,14 @@ namespace League.ViewModel
             }
         }
 
+        public EditNinjaVM GetEditNinjaVM
+        {
+            get
+            {
+                return new EditNinjaVM(null);
+            }
+        }
+
         public static void Cleanup()
         {
             // TODO Clear the ViewModels
