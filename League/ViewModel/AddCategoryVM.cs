@@ -13,24 +13,17 @@ namespace League.ViewModel
 {
     public class AddCategoryVM : AddVM<CategoryListVM, CategoryVM>
     {
-        public ICommand AddCategoryCommand { get; set; }
-        public string NameText { get; set; }
-
         public AddCategoryVM(CategoryListVM ViewModelList)
             : base(ViewModelList)
         {
             NewItem = new CategoryVM();
             VMList = ViewModelList;
-
-            AddCategoryCommand = new RelayCommand(AddItem);
         }
 
         public override void AddItem()
         {
             using (var context = new LeagueNinjasDBEntities())
             {
-                NewItem.Name = NameText;
-
                 if (!CanAdd())
                     return;
 

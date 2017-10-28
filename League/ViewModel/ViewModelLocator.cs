@@ -53,29 +53,45 @@ namespace League.ViewModel
             }
         }
 
+        public EquipmentListVM GetEquipmentList
+        {
+            get
+            {
+                return ServiceLocator.Current.GetInstance<EquipmentListVM>();
+            }
+        }
+
+        public CategoryListVM GetCategoryList
+        {
+            get
+            {
+                return ServiceLocator.Current.GetInstance<CategoryListVM>();
+            }
+        }
+
         public AddNinjaVM GetAddNinjaVM
         {
-            get 
+            get
             {
                 return new AddNinjaVM(GetNinjaList);
             }
         }
 
-      //  public AddEquipmentVM GetAddEquipmentVM
-      //  {
-      //      get
-      //      {
-                
-     //       }
-     //   }
+        public AddEquipmentVM GetAddEquipmentVM
+        {
+            get
+            {
+                return new AddEquipmentVM(GetEquipmentList);
+            }
+        }
 
-     //   public AddCategoryVM GetAddCategoryVM
-     //   {
-     //       get
-    //        {
-                
-     //       }
-     //   }
+        public AddCategoryVM GetAddCategoryVM
+        {
+            get
+            {
+                return new AddCategoryVM(GetCategoryList);
+            }
+        }
 
         public static void Cleanup()
         {

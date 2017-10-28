@@ -10,17 +10,17 @@
     <StackPanel>
         <TextBlock FontSize="30">AddEquipmentView</TextBlock>
         <TextBlock TextAlignment="Center" FontSize="12">Name</TextBlock>
-        <TextBox Text="{Binding TextName }" TextAlignment="Center"></TextBox>
+        <TextBox Text="{Binding NewItem.Name }" TextAlignment="Center"></TextBox>
         <TextBlock TextAlignment="Center" FontSize="12">Strength</TextBlock>
-        <TextBox Text="{Binding TextStrength }" TextAlignment="Center"></TextBox>
+        <TextBox Text="{Binding NewItem.Strength }" TextAlignment="Center"></TextBox>
         <TextBlock TextAlignment="Center" FontSize="12">Intelligence</TextBlock>
-        <TextBox Text="{Binding TextIntelligence }" TextAlignment="Center"></TextBox>
+        <TextBox Text="{Binding NewItem.Intelligence }" TextAlignment="Center"></TextBox>
         <TextBlock TextAlignment="Center" FontSize="12">Agility</TextBlock>
-        <TextBox Text="{Binding TextAgility}" TextAlignment="Center"></TextBox>
+        <TextBox Text="{Binding NewItem.Agility}" TextAlignment="Center"></TextBox>
         <TextBlock TextAlignment="Center" FontSize="12">Price</TextBlock>
-        <TextBox Text="{Binding TextPrice }" TextAlignment="Center"></TextBox>
+        <TextBox Text="{Binding NewItem.Price }" TextAlignment="Center"></TextBox>
         <TextBlock TextAlignment="Center" FontSize="12">Category</TextBlock>
-        <TextBox Text="{Binding TextCategory}" TextAlignment="Center"></TextBox>
-        <Button Command="{Binding AddEquipment }" CommandParameter="{Binding AddEquipment }">Save equipment</Button>
+        <TextBox Text="{Binding NewItem.Category}" TextAlignment="Center"></TextBox>
+        <Button Command="{Binding AddCommand }">Save equipment</Button>
     </StackPanel>
 </Window>
