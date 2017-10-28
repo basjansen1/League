@@ -17,6 +17,7 @@ namespace League.ViewModel
         public EditNinjaVM(NinjaVM Item)
             : base(Item)
         {
+            MessageBox.Show("New EditNinjaWindow!");
         }
 
         public override void EditItem(EditNinjaView window)
@@ -35,13 +36,7 @@ namespace League.ViewModel
 
         public override bool CanEdit()
         {
-            if (ItemToBeEdited.Name != null)
-                return true;
-            else
-            {
-                MessageBox.Show("You have to give a name to the ninja!");
-                return false;
-            }
+            return true;
         }
     }
 }

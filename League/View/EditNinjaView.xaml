@@ -1,4 +1,4 @@
-﻿<Window x:Class="League.View.EditNinjaView"
+<Window x:Class="League.View.EditNinjaView"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -6,13 +6,14 @@
         xmlns:local="clr-namespace:League.View"
         mc:Ignorable="d"
         Title="EditNinjaView" Height="300" Width="300"
-        DataContext="{Binding GetEditNinjaVM, Source= {StaticResource Locator}}">
+        Name="EditNinjaWindow"
+        DataContext="{Binding getEditNinjaVM, Source= {StaticResource Locator}}">
     <StackPanel>
         <TextBlock FontSize="30">EditNinjaView</TextBlock>
         <TextBlock TextAlignment="Center" FontSize="12">Ninja name</TextBlock>
         <TextBox Text="{Binding ItemToBeEdited.Name}" TextAlignment="Center"></TextBox>
         <TextBlock TextAlignment="Center" FontSize="12">Gold worth</TextBlock>
         <TextBox Text="{Binding ItemToBeEdited.AmountOfGold}" TextAlignment="Center"></TextBox>
-        <Button Command="{Binding AddCommand}" CommandParameter="{Binding AddCommand}">Save ninja</Button>
+        <Button Command="{Binding EditCommand}" CommandParameter="{Binding ElementName=EditNinjaWindow}">Save changes</Button>
     </StackPanel>
 </Window>

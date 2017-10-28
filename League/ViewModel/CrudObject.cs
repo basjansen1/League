@@ -25,8 +25,6 @@ namespace League.ViewModel
         public ObservableCollection<T> ItemList { get; set; }
 
         // Commands
-        public ICommand AddCommand { get; set; }
-        public ICommand EditCommand { get; set; }
         public ICommand DeleteCommand { get; set; }
         public ICommand ShowAddCommand { get; set; }
         public ICommand ShowEditCommand { get; set; }
