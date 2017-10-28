@@ -13,6 +13,7 @@ namespace League.ViewModel
     public class EditEquipmentVM : EditVM<EquipmentVM, EditEquipmentView>
     {
         public string ItemToEditCategory { get; set; }
+
         public EditEquipmentVM(EquipmentVM Item) : base(Item)
         {
         }

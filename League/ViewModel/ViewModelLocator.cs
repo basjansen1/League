@@ -109,6 +109,22 @@ namespace League.ViewModel
             }
         }
 
+        public EditCategoryVM GetEditCategoryVM
+        {
+            get
+            {
+                return new EditCategoryVM(GetCategoryList.SelectedItem);
+            }
+        }
+
+        public EditEquipmentVM GetEditEquipmentVM
+        {
+            get
+            {
+                return new EditEquipmentVM(GetEquipmentList.SelectedItem);
+            }
+        }
+
         public static void Cleanup()
         {
             // TODO Clear the ViewModels
