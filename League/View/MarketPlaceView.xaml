@@ -4,9 +4,41 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:League.View"
+        xmlns:vm="clr-namespace:League.ViewModel"
         mc:Ignorable="d"
-        Title="MarketPlaceView" Height="300" Width="300">
-    <Grid>
+        Title="MarketPlaceView" Height="375" Width="750">
+    <StackPanel Grid.Row="2" Orientation="Horizontal">
+        <!-- Stackpanel voor de categorieen -->
+        <StackPanel Width="150">
+            <DataGrid AutoGenerateColumns="False" IsReadOnly="True" SelectedItem="{Binding CategoryListVM, Mode=TwoWay}" ItemsSource="{Binding ItemList}">
+                <DataTemplate>
+                    <Button Content="{Binding NewItem.Strength}" Command="{Binding DataContext.ShowEditCommand, RelativeSource={RelativeSource AncestorType=DataGrid}}"/>
+                </DataTemplate>
+            </DataGrid>
+        </StackPanel>
         
-    </Grid>
+        <!-- Stackpanel met de te kopen equipments -->
+        <StackPanel Width="300">
+            <DataGrid AutoGenerateColumns="False" IsReadOnly="True" SelectedItem="{Binding CategoryListVM, Mode=TwoWay}" ItemsSource="{Binding ItemList}">
+                <DataTemplate>
+                    <TextBlock Text="{Binding NewItem.Strength}" />
+                    <!-- stel juiste binding in. dit wordt deequipment omschrijving -->
+                </DataTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding NewItem.Strength}" />
+                    <!-- stel juiste binding in. dit wordt de gold worth -->
+                </DataTemplate>
+            </DataGrid>
+        </StackPanel>
+        
+        <!-- Stackpanel voor het kopen van een item -->
+        <StackPanel Width="300">
+            <TextBlock Text="{Binding SelectedItem.Name}" />
+            <TextBlock Text="{Binding SelectedItem.Strength}" />
+            <TextBlock Text="{Binding SelectedItem.Agility}" />
+            <TextBlock Text="{Binding SelectedItem.Price}" />
+            <Button Command="{Binding DataContext.ShowEditCommand}">Buy</Button>
+            <TextBlock Text="You have x gold left" /> <!-- Bij de x haal de resterende aantal goud op van de gebruiker -->
+        </StackPanel>
+    </StackPanel>
 </Window>
