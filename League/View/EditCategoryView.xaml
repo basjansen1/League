@@ -5,8 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:League.View"
         mc:Ignorable="d"
-        Title="EditCategoryView" Height="300" Width="300">
-    <Grid>
-        
-    </Grid>
+        Title="AddNinjaView" Height="300" Width="300"
+        DataContext="{Binding GetEditCategoryVM, Source= {StaticResource Locator}}">
+    <StackPanel>
+        <TextBlock FontSize="30">EditCategoryView</TextBlock>
+        <TextBlock TextAlignment="Center" FontSize="12">Category name</TextBlock>
+        <TextBox Text="{Binding ItemToBeEdited.Name}" TextAlignment="Center"></TextBox>
+        <Button Command="{Binding EditCommand}">Save category</Button>
+    </StackPanel>
 </Window>
