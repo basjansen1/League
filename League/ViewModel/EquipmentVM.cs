@@ -116,7 +116,6 @@ namespace League.ViewModel
             {
                 if (context.Categories.Contains(category))
                 {
-                 //   _equipment.
                     return true;
                 } else
                 {
