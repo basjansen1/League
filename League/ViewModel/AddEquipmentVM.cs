@@ -12,7 +12,6 @@ namespace League.ViewModel
 {
     public class AddEquipmentVM : AddVM<EquipmentListVM, EquipmentVM>
     {
-        public string NewCategoryName { get; set; }
         public AddEquipmentVM(EquipmentListVM ViewModelList) 
             : base(ViewModelList)
         {
@@ -58,9 +57,9 @@ namespace League.ViewModel
             {
                 MessageBox.Show("You have to assign a price value higher than 0");
                 return false;
-            } else if (NewCategoryName != null || NewItem.SetCategory(NewCategoryName))
+            } else if (NewItem.Category != null || NewItem.SetCategory(NewItem.Category))
             {
-                if(NewCategoryName != null)
+                if(NewItem.Category != null)
                 {
                     MessageBox.Show("You have to assign a category");
                     return false;

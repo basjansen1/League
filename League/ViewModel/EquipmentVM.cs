@@ -88,6 +88,18 @@ namespace League.ViewModel
             }
         }
 
+        public string Category
+        {
+            get
+            {
+                return _equipment.Category;
+            }
+            set
+            {
+                _equipment.Category = value;
+            }
+        }
+
         public Equipment ToModel()
         {
             return _equipment;
