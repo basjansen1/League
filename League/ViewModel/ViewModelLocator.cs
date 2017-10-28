@@ -93,6 +93,14 @@ namespace League.ViewModel
             }
         }
 
+        public EditCategoryVM GetEditCategoryVM
+        {
+            get
+            {
+                return new EditCategoryVM(GetCategoryList.SelectedItem);
+            }
+        }
+
         public EditNinjaVM GetEditNinjaVM
         {
             get
