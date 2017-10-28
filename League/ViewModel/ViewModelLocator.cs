@@ -77,6 +77,14 @@ namespace League.ViewModel
      //       }
      //   }
 
+        public EditNinjaVM getEditNinjaVM
+        {
+            get
+            {
+                return new EditNinjaVM(GetNinjaList.SelectedItem);
+            }
+        }
+
         public static void Cleanup()
         {
             // TODO Clear the ViewModels
