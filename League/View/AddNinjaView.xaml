@@ -10,9 +10,9 @@
     <StackPanel>
         <TextBlock FontSize="30">AddNinjaView</TextBlock>
         <TextBlock TextAlignment="Center" FontSize="12">Ninja name</TextBlock>
-        <TextBox Text="{Binding NameText}" TextAlignment="Center"></TextBox>
+        <TextBox Text="{Binding NewItem.Name}" TextAlignment="Center" Name="TxtName"></TextBox>
         <TextBlock TextAlignment="Center" FontSize="12">Gold worth</TextBlock>
-        <TextBox Text="{Binding AmountGoldText}" TextAlignment="Center"></TextBox>
-        <Button Command="{Binding AddNinjaCommand}" CommandParameter="{Binding AddNinjaCommand}">Save ninja</Button>
+        <TextBox Text="{Binding NewItem.AmountOfGold}" TextAlignment="Center" Name="TxtAmountGold"></TextBox>
+        <Button Command="{Binding AddCommand}">Save ninja</Button>
     </StackPanel>
 </Window>

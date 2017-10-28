@@ -14,12 +14,12 @@ namespace League.ViewModel
         public T VMList { get; set; }
         public N NewItem { get; set; } // ToDo instancieren
 
-        public ICommand AddCommand;
+        public ICommand AddCommand { get; set; }
 
         public AddVM(T ViewModelList)
         {
             VMList = ViewModelList;
-            AddCommand = new RelayCommand(AddItem, CanAdd);
+            AddCommand = new RelayCommand(AddItem);
         }
 
         public abstract void AddItem();
