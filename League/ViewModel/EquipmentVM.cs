@@ -88,6 +88,18 @@ namespace League.ViewModel
             }
         }
 
+        public string Category
+        {
+            get
+            {
+                return _equipment.Category;
+            }
+            set
+            {
+                _equipment.Category = value;
+            }
+        }
+
         public Equipment ToModel()
         {
             return _equipment;
@@ -116,7 +128,6 @@ namespace League.ViewModel
             {
                 if (context.Categories.Contains(category))
                 {
-                 //   _equipment.
                     return true;
                 } else
                 {

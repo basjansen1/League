@@ -22,26 +22,39 @@ namespace League.ViewModel
 
         public override void AddItem()
         {
-            using (var context = new LeagueNinjasDBEntities())
+            if (CanAdd())
             {
-                if (!CanAdd())
-                    return;
-
-                VMList.ItemList.Add(NewItem);
-                context.Categories.Add(NewItem.ToModel());
-                context.SaveChanges();
+                using (var context = new LeagueNinjasDBEntities())
+                {
+                    VMList.ItemList.Add(NewItem);
+                    context.Categories.Add(NewItem.ToModel());
+                    context.SaveChanges();
+                }
+                VMList.HideAddWindow();
             }
-            VMList.HideAddWindow();
         }
 
         public override bool CanAdd()
         {
-            if (NewItem.Name != null)
-                return true;
-            else
+           if (NewItem.Name == null)
             {
                 MessageBox.Show("You have to give a name to the category!");
                 return false;
+            }
+            else
+            {
+                using (var context = new LeagueNinjasDBEntities())
+                {
+                    if (context.Categories.Where(c => c.Name.Equals(NewItem.Name)).ToList().Count == 0)
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        MessageBox.Show("This category already exists");
+                        return false;
+                    }
+                }
             }
         }
     }

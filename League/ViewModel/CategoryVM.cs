@@ -20,6 +20,7 @@ namespace League.ViewModel
             set
             {
                 _category.Name = value;
+                RaisePropertyChanged("Name");
             }
         }
 
