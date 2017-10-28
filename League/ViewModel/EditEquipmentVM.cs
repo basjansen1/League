@@ -34,12 +34,16 @@ namespace League.ViewModel
 
         public override bool CanEdit()
         {
-            if(ItemToBeEdited.Name != null && ItemToEditCategory == null)
-            {
+            if(ItemToBeEdited.Name != null 
+                && ItemToEditCategory == null 
+                && ItemToBeEdited.Agility != 0
+                && ItemToBeEdited.Intelligence != 0 
+                && ItemToBeEdited.Price != 0
+                && ItemToBeEdited.Strength != 0)
                 return true;
-            } else
+            else
             {
-                MessageBox.Show("You have to give a name to the equipment!");
+                MessageBox.Show("Please enter all fields!");
                 return false;
             }
         }
