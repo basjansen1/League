@@ -8,7 +8,7 @@
         Title="EditEquipmentView" Height="300" Width="300"
         DataContext="{Binding GetEditEquipmentVM, Source= {StaticResource Locator}}">
     <StackPanel>
-        <TextBlock FontSize="30">AddEquipmentView</TextBlock>
+        <TextBlock FontSize="30">EditEquipmentView</TextBlock>
         <TextBlock TextAlignment="Center" FontSize="12">Name</TextBlock>
         <TextBox Text="{Binding SelectedItem.Name }" TextAlignment="Center"></TextBox>
         <TextBlock TextAlignment="Center" FontSize="12">Strength</TextBlock>
