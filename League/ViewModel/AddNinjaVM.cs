@@ -13,49 +13,42 @@ namespace League.ViewModel
 {
     public class AddNinjaVM : AddVM<NinjaListVM, NinjaVM>
     {
-        public ICommand AddNinjaCommand { get; set; }
-        public string NameText { get; set; }
-        public string AmountGoldText { get; set; }
-
-        public AddNinjaVM(NinjaListVM ViewModelList)
+       public AddNinjaVM(NinjaListVM ViewModelList)
             : base(ViewModelList)
         {
             NewItem = new NinjaVM();
             VMList = ViewModelList;
-
-            AddNinjaCommand = new RelayCommand(AddItem);
+            
+            MessageBox.Show("New AddNinjaWindow!");
         }
 
         public override void AddItem()
         {
-            using (var context = new LeagueNinjasDBEntities())
+            if (CanAdd())
             {
-                NewItem.Id = context.Ninjas.Max(i => i.Id) + 1; // Get the highest ID and increment this
-                NewItem.Name = NameText;
-                // TODO CHECK IF PARSING WENT RIGHT
-                NewItem.AmountOfGold = Int32.Parse(AmountGoldText);
-
-                if (!CanAdd())
-                    return;
-
-                VMList.ItemList.Add(NewItem);
-                context.Ninjas.Add(NewItem.ToModel());
-                try
+                using (var context = new LeagueNinjasDBEntities())
                 {
-                    context.SaveChanges();
-                }
-                catch (DbEntityValidationException ex)
-                {
-                    foreach (var entityValidationErrors in ex.EntityValidationErrors)
+                    NewItem.Id = context.Ninjas.Max(i => i.Id) + 1; // Get the highest ID and increment this
+                    
+                    VMList.ItemList.Add(NewItem);
+                    context.Ninjas.Add(NewItem.ToModel());
+                    try
                     {
-                        foreach (var validationError in entityValidationErrors.ValidationErrors)
+                        context.SaveChanges();
+                    }
+                    catch (DbEntityValidationException ex)
+                    {
+                        foreach (var entityValidationErrors in ex.EntityValidationErrors)
                         {
-                            Console.Write("Property: " + validationError.PropertyName + " Error: " + validationError.ErrorMessage);
+                            foreach (var validationError in entityValidationErrors.ValidationErrors)
+                            {
+                                Console.Write("Property: " + validationError.PropertyName + " Error: " + validationError.ErrorMessage);
+                            }
                         }
                     }
                 }
+                VMList.HideAddWindow();
             }
-            VMList.HideAddWindow();
         }
 
         public override bool CanAdd()
