@@ -44,6 +44,8 @@ namespace League.ViewModel
 
             SimpleIoc.Default.Register<NinjaListVM>();
             SimpleIoc.Default.Register<AddNinjaVM>();
+            SimpleIoc.Default.Register<AddEquipmentVM>();
+            SimpleIoc.Default.Register<AddCategoryVM>();
         }
 
         public NinjaListVM GetNinjaList
@@ -61,7 +63,23 @@ namespace League.ViewModel
                 return ServiceLocator.Current.GetInstance<AddNinjaVM>();
             }
         }
-        
+
+        public AddEquipmentVM GetAddEquipmentVM
+        {
+            get
+            {
+                return ServiceLocator.Current.GetInstance<AddEquipmentVM>();
+            }
+        }
+
+        public AddCategoryVM GetAddCategoryVM
+        {
+            get
+            {
+                return ServiceLocator.Current.GetInstance<AddCategoryVM>();
+            }
+        }
+
         public static void Cleanup()
         {
             // TODO Clear the ViewModels

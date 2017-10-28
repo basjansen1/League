@@ -5,8 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:League.View"
         mc:Ignorable="d"
-        Title="EditNinjaView" Height="300" Width="300">
-    <Grid>
-        
-    </Grid>
+        Title="EditNinjaView" Height="300" Width="300"
+        DataContext="{Binding GetAddNinjaVM, Source= {StaticResource Locator}}">
+    <StackPanel>
+        <TextBlock FontSize="30">EditNinjaView</TextBlock>
+        <TextBlock TextAlignment="Center" FontSize="12">Ninja name</TextBlock>
+        <TextBox Text="{Binding NameText}" TextAlignment="Center"></TextBox>
+        <TextBlock TextAlignment="Center" FontSize="12">Gold worth</TextBlock>
+        <TextBox Text="{Binding AmountGoldText}" TextAlignment="Center"></TextBox>
+        <Button Command="{Binding AddNinjaCommand}" CommandParameter="{Binding AddNinjaCommand}">Save ninja</Button>
+    </StackPanel>
 </Window>
