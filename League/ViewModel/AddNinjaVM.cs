@@ -18,8 +18,6 @@ namespace League.ViewModel
         {
             NewItem = new NinjaVM();
             VMList = ViewModelList;
-            
-            MessageBox.Show("New AddNinjaWindow!");
         }
 
         public override void AddItem()

@@ -10,8 +10,8 @@
     <StackPanel>
         <TextBlock FontSize="30">AddCategoryView</TextBlock>
         <TextBlock TextAlignment="Center" FontSize="12">Category name</TextBlock>
-        <TextBox Text="{Binding NameText}" TextAlignment="Center"></TextBox>
-        <Button Command="{Binding AddCategoryCommand}" CommandParameter="{Binding AddCategoryCommand}">Save category</Button>
+        <TextBox Text="{Binding NewItem.Name}" TextAlignment="Center"></TextBox>
+        <Button Command="{Binding AddCommand}">Save category</Button>
     </StackPanel>
 </Window>
 
