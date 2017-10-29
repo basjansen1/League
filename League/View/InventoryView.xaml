@@ -19,5 +19,7 @@
         <TextBlock Text="{Binding Path=GetTotalAgility, StringFormat='Agility: {0}'}" />
         <TextBlock Text="{Binding Path=GetTotalInteligence, StringFormat='Intelligence: {0}'}" />
         <TextBlock Text="{Binding Path=GetTotalWorth, StringFormat='Gear Value: {0}'}" />
+
+        <Button Command="{Binding GoToMarketCommand}">Open marketplace</Button>
     </StackPanel>
 </Window>
