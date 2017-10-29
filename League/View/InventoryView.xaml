@@ -5,8 +5,31 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:League.View"
         mc:Ignorable="d"
-        Title="InventoryView" Height="300" Width="300">
+        Title="InventoryView" Height="600" Width="400"
+        DataContext="{Binding GetInventoryVM, Source= {StaticResource Locator}}">
     <Grid>
+        <TextBlock Text="{Binding SelectedNinja.Name}" HorizontalAlignment="Left" Margin="20, 20, 20, 20">Petje</TextBlock>
+        <TextBlock HorizontalAlignment="Left" Margin="20, 35, 20, 20">Petje</TextBlock>
         
+        <TextBlock HorizontalAlignment="Left" Margin="20, 200, 20, 20">Petje</TextBlock>
+        <TextBlock HorizontalAlignment="Left" Margin="20, 215, 20, 20">Petje</TextBlock>
+        
+        <TextBlock HorizontalAlignment="Left" Margin="20, 380, 20, 20">Petje</TextBlock>
+        <TextBlock HorizontalAlignment="Left" Margin="20, 395, 20, 20">Petje</TextBlock>
+
+        <TextBlock HorizontalAlignment="Right" Margin="20, 20, 20, 20">bami</TextBlock>
+        <TextBlock HorizontalAlignment="Right" Margin="20, 35, 20, 20">bami</TextBlock>
+        
+        <TextBlock HorizontalAlignment="Right" Margin="20, 200, 20, 20">bami</TextBlock>
+        <TextBlock HorizontalAlignment="Right" Margin="20, 215, 20, 20">bami</TextBlock>
+        
+        <TextBlock HorizontalAlignment="Right" Margin="20, 380, 20, 20">bami</TextBlock>
+        <TextBlock HorizontalAlignment="Right" Margin="20, 395, 20, 20">bami</TextBlock>
+
+        <TextBlock Text="{Binding GetTotalStrenght}" HorizontalAlignment="Left" Margin="20, 450, 20, 20">Strength: </TextBlock>
+        <TextBlock Text="{Binding GetTotalAgility}" HorizontalAlignment="Left" Margin="20, 465, 20, 20">Agility: </TextBlock>
+        <TextBlock Text="{Binding GetTotalInteligence}" HorizontalAlignment="Left" Margin="20, 480, 20, 20">Intelligence: </TextBlock>
+        
+        <TextBlock HorizontalAlignment="Right" Margin="20, 450, 20, 20">Gear Value: </TextBlock>
     </Grid>
 </Window>
