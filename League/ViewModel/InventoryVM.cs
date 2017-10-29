@@ -73,6 +73,21 @@ namespace League.ViewModel
             }
         }
 
+        public int GetTotalWorth
+        {
+            get
+            {
+                int worth = 0;
+
+                using (var context = new LeagueNinjasDBEntities())
+                {
+                    Ninja ninja = SelectedNinja.ToModel();
+                    context.Ninjas.Where(n => n.Id == ninja.Id).First().Equipments.ToList().ForEach(e => worth += e.Price);
+                }
+                return worth;
+            }
+        }
+
         public void UpdateNinjaEquipmentsCollection()
         {
             NinjaEquipmentsCollection.Clear();
