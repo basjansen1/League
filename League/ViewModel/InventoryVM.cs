@@ -3,6 +3,7 @@ using League.Model;
 using League.Utils;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,6 +17,7 @@ namespace League.ViewModel
         public ICommand SellAllItemsCommand { get; set; }
         public ICommand BuyEquipmentCommand { get; set; }
         public ICommand SellEquipmentCommand { get; set; }
+        public ObservableCollection<EquipmentVM> NinjaEquipmentsCollection { get; set; }
 
         public InventoryVM(NinjaVM selectedNinja)
         {
@@ -23,6 +25,7 @@ namespace League.ViewModel
             SellAllItemsCommand = new SellAllItemsCommand(this);
             BuyEquipmentCommand = new BuyEquipmentCommand(this);
             SellEquipmentCommand = new SellEquipmentCommand(this);
+            NinjaEquipmentsCollection = new ObservableCollection<EquipmentVM>();
         }
 
         public int GetTotalStrenght()
@@ -59,11 +62,12 @@ namespace League.ViewModel
 
         }
 
-        public List<EquipmentVM> GetNinjaEquipments()
+        public void UpdateNinjaEquipmentsCollection()
         {
+            NinjaEquipmentsCollection.Clear();
             using (var context = new LeagueNinjasDBEntities())
             {
-                return context.Ninjas.Where(n => n.Equals(SelectedNinja.ToModel())).First().Equipments.Select(e => new EquipmentVM(e)).ToList();
+                context.Ninjas.Where(n => n.Equals(SelectedNinja.ToModel())).First().Equipments.Select(e => new EquipmentVM(e)).ToList().ForEach(e => NinjaEquipmentsCollection.Add(e));
             }
         }
         
