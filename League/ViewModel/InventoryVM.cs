@@ -28,7 +28,21 @@ namespace League.ViewModel
             NinjaEquipmentsCollection = new ObservableCollection<EquipmentVM>();
         }
 
-        public int GetTotalStrenght()
+        public int GetTotalStrenght
+        {
+            get
+            {
+                int strength = 0;
+
+                using (var context = new LeagueNinjasDBEntities())
+                {
+                    context.Ninjas.Where(n => n.Equals(SelectedNinja.ToModel())).First().Equipments.ToList().ForEach(e => strength += e.Strength);
+                }
+                return strength;
+            }
+        }
+
+        public int GetTotalStrenght2()
         {
             int strength = 0;
 

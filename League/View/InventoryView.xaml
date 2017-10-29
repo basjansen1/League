@@ -8,23 +8,23 @@
         Title="InventoryView" Height="600" Width="400"
         DataContext="{Binding GetInventoryVM, Source= {StaticResource Locator}}">
     <Grid>
-        <TextBlock Text="{Binding SelectedNinja.Name}" HorizontalAlignment="Left" Margin="20, 20, 20, 20">Petje</TextBlock>
-        <TextBlock HorizontalAlignment="Left" Margin="20, 35, 20, 20">Petje</TextBlock>
-        
-        <TextBlock HorizontalAlignment="Left" Margin="20, 200, 20, 20">Petje</TextBlock>
-        <TextBlock HorizontalAlignment="Left" Margin="20, 215, 20, 20">Petje</TextBlock>
-        
-        <TextBlock HorizontalAlignment="Left" Margin="20, 380, 20, 20">Petje</TextBlock>
-        <TextBlock HorizontalAlignment="Left" Margin="20, 395, 20, 20">Petje</TextBlock>
+        <TextBlock Text="{Binding NinjaEquipmentsCollection.Name}" HorizontalAlignment="Left" Margin="20, 20, 20, 20"></TextBlock>
+        <TextBlock Text="{Binding NinjaEquipmentsCollection.Strength}" HorizontalAlignment="Left" Margin="20, 35, 20, 20"></TextBlock>
 
-        <TextBlock HorizontalAlignment="Right" Margin="20, 20, 20, 20">bami</TextBlock>
-        <TextBlock HorizontalAlignment="Right" Margin="20, 35, 20, 20">bami</TextBlock>
-        
-        <TextBlock HorizontalAlignment="Right" Margin="20, 200, 20, 20">bami</TextBlock>
-        <TextBlock HorizontalAlignment="Right" Margin="20, 215, 20, 20">bami</TextBlock>
-        
-        <TextBlock HorizontalAlignment="Right" Margin="20, 380, 20, 20">bami</TextBlock>
-        <TextBlock HorizontalAlignment="Right" Margin="20, 395, 20, 20">bami</TextBlock>
+        <TextBlock Text="{Binding NinjaEquipmentsCollection.Name}" HorizontalAlignment="Left" Margin="20, 200, 20, 20"></TextBlock>
+        <TextBlock Text="{Binding NinjaEquipmentsCollection.Strength}" HorizontalAlignment="Left" Margin="20, 215, 20, 20"></TextBlock>
+
+        <TextBlock Text="{Binding NinjaEquipmentsCollection.Name}" HorizontalAlignment="Left" Margin="20, 380, 20, 20"></TextBlock>
+        <TextBlock Text="{Binding NinjaEquipmentsCollection.Strength}" HorizontalAlignment="Left" Margin="20, 395, 20, 20"></TextBlock>
+
+        <TextBlock Text="{Binding NinjaEquipmentsCollection.Name}" HorizontalAlignment="Right" Margin="20, 20, 20, 20"></TextBlock>
+        <TextBlock Text="{Binding NinjaEquipmentsCollection.Strength}" HorizontalAlignment="Right" Margin="20, 35, 20, 20"></TextBlock>
+
+        <TextBlock Text="{Binding NinjaEquipmentsCollection.Name}" HorizontalAlignment="Right" Margin="20, 200, 20, 20"></TextBlock>
+        <TextBlock Text="{Binding NinjaEquipmentsCollection.Strength}" HorizontalAlignment="Right" Margin="20, 215, 20, 20"></TextBlock>
+
+        <TextBlock Text="{Binding NinjaEquipmentsCollection.Name}" HorizontalAlignment="Right" Margin="20, 380, 20, 20"></TextBlock>
+        <TextBlock Text="{Binding NinjaEquipmentsCollection.Strength}" HorizontalAlignment="Right" Margin="20, 395, 20, 20"></TextBlock>
 
         <TextBlock Text="{Binding GetTotalStrenght}" HorizontalAlignment="Left" Margin="20, 450, 20, 20">Strength: </TextBlock>
         <TextBlock Text="{Binding GetTotalAgility}" HorizontalAlignment="Left" Margin="20, 465, 20, 20">Agility: </TextBlock>
