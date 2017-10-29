@@ -6,11 +6,13 @@
         xmlns:local="clr-namespace:League.View"
         xmlns:vm="clr-namespace:League.ViewModel"
         mc:Ignorable="d"
-        Title="MarketPlaceView" Height="375" Width="750">
-    <StackPanel Grid.Row="2" Orientation="Horizontal">
+        Title="MarketPlaceView" Height="375" Width="750"
+        DataContext="{Binding GetMarketPlaceVM, Source={StaticResource Locator}}">
+    
+    <StackPanel Orientation="Horizontal">
         <!-- Stackpanel voor de categorieen -->
         <StackPanel Width="150">
-            <DataGrid AutoGenerateColumns="False" IsReadOnly="True" SelectedItem="{Binding CategoryListVM, Mode=TwoWay}" ItemsSource="{Binding ItemList}">
+            <DataGrid AutoGenerateColumns="False" IsReadOnly="True" SelectedItem="{Binding CategoryList.SelectedItem, Mode=TwoWay}" ItemsSource="{Binding CategoryList.ItemList}">
                 <DataTemplate>
                     <Button Content="{Binding NewItem.Strength}" Command="{Binding DataContext.ShowEditCommand, RelativeSource={RelativeSource AncestorType=DataGrid}}"/>
                 </DataTemplate>

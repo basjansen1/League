@@ -135,6 +135,14 @@ namespace League.ViewModel
             }
         }
 
+        public MarketPlaceVM GetMarketPlaceVM
+        {
+            get
+            {
+                return new MarketPlaceVM(GetCategoryList, GetEquipmentList, GetNinjaList, GetInventoryVM);
+            }
+        }
+
         public static void Cleanup()
         {
             // TODO Clear the ViewModels
