@@ -17,6 +17,8 @@ namespace League.ViewModel
     {
         private AddNinjaView _addNinjaView;
         private EditNinjaView _editNinjaView;
+        private InventoryView _inventoryView;
+        public ICommand ShowInventoryViewCommand { get; set; }
 
         public NinjaListVM()
         {
@@ -24,6 +26,7 @@ namespace League.ViewModel
             {
                 context.Ninjas.ToList().ForEach(n => ItemList.Add(new NinjaVM(n))); // Do by all VM Lists
             }
+            ShowInventoryViewCommand = new RelayCommand(ShowInventoryWindow);
         }
 
         public override void DeleteItem()
@@ -58,6 +61,17 @@ namespace League.ViewModel
         public override void HideEditWindow()
         {
             _editNinjaView.Hide();
+        }
+
+        public void ShowInventoryWindow()
+        {
+            _inventoryView = new InventoryView();
+            _inventoryView.Show();
+        }
+
+        public void HideInventoryWindow()
+        {
+            _inventoryView.Hide();
         }
     }
 }
