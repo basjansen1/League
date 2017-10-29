@@ -36,7 +36,8 @@ namespace League.ViewModel
 
                 using (var context = new LeagueNinjasDBEntities())
                 {
-                    context.Ninjas.Where(n => n.Equals(SelectedNinja.ToModel())).First().Equipments.ToList().ForEach(e => strength += e.Strength);
+                    Ninja ninja = SelectedNinja.ToModel();
+                    context.Ninjas.Where(n => n.Id == ninja.Id).First().Equipments.ToList().ForEach(e => strength += e.Strength);
                 }
                 return strength;
             }
@@ -50,7 +51,8 @@ namespace League.ViewModel
 
                 using (var context = new LeagueNinjasDBEntities())
                 {
-                    context.Ninjas.Where(n => n.Equals(SelectedNinja.ToModel())).First().Equipments.ToList().ForEach(e => inteligence += e.Intelligence);
+                    Ninja ninja = SelectedNinja.ToModel();
+                    context.Ninjas.Where(n => n.Id == ninja.Id).First().Equipments.ToList().ForEach(e => inteligence += e.Intelligence);
                 }
                 return inteligence;
             }
@@ -64,7 +66,8 @@ namespace League.ViewModel
 
                 using (var context = new LeagueNinjasDBEntities())
                 {
-                    context.Ninjas.Where(n => n.Equals(SelectedNinja.ToModel())).First().Equipments.ToList().ForEach(e => agility += e.Agility);
+                    Ninja ninja = SelectedNinja.ToModel();
+                    context.Ninjas.Where(n => n.Id == ninja.Id).First().Equipments.ToList().ForEach(e => agility += e.Agility);
                 }
                 return agility;
             }
