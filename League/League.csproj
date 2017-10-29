@@ -132,6 +132,7 @@
     <Compile Include="ViewModel\MarketPlaceVM.cs" />
     <Compile Include="ViewModel\NinjaListVM.cs" />
     <Compile Include="ViewModel\NinjaVM.cs" />
+    <Compile Include="Utils\SellAllItemsCommand.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />
     <Compile Include="View\AddCategoryView.xaml.cs">
       <DependentUpon>AddCategoryView.xaml</DependentUpon>
