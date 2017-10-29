@@ -64,6 +64,7 @@
                     </DataGridTemplateColumn>
                 </DataGrid.Columns>
             </DataGrid>
+            <Button Command="{Binding EquipmentList.ShowAddCommand}">Add equipment</Button>
         </StackPanel>
         
         <!-- Stackpanel voor het kopen van een item -->
