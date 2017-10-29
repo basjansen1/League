@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:League.View"
         mc:Ignorable="d"
         Title="EditEquipmentView" Height="300" Width="300"
+        Name="EditWindow"
         DataContext="{Binding GetEditEquipmentVM, Source= {StaticResource Locator}}">
     <StackPanel>
         <TextBlock FontSize="30">EditEquipmentView</TextBlock>
@@ -21,6 +22,6 @@
         <TextBox Text="{Binding SelectedItem.Price }" TextAlignment="Center"></TextBox>
         <TextBlock TextAlignment="Center" FontSize="12">Category</TextBlock>
         <TextBox Text="{Binding SelectedItem.Category}" TextAlignment="Center"></TextBox>
-        <Button Command="{Binding AddCommand }">Save equipment</Button>
+        <Button Command="{Binding EditCommand}" CommandParameter="{Binding ElementName=EditWindow}">Save equipment</Button>
     </StackPanel>
 </Window>
