@@ -31,7 +31,7 @@ namespace League.ViewModel
         public void UpdateEquipmentCollection()
         {
             EquipentsOfSelectedCategoryCollection.Clear();
-            EquipmentList.getEquipmentsByCategory(CategoryList.SelectedItem.Name).ForEach(e => EquipentsOfSelectedCategoryCollection.Add(e));
+            EquipmentList.getEquipmentsByCategory(CategoryList.SelectedItem.Name).ForEach(e => EquipentsOfSelectedCategoryCollection.Add(new EquipmentVM(e)));
         }
     }
 }
