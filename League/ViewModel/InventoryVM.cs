@@ -28,38 +28,46 @@ namespace League.ViewModel
             NinjaEquipmentsCollection = new ObservableCollection<EquipmentVM>();
         }
 
-        public int GetTotalStrenght()
+        public int GetTotalStrenght
         {
-            int strength = 0;
-
-            using (var context = new LeagueNinjasDBEntities())
+            get
             {
-                context.Ninjas.Where(n => n.Equals(SelectedNinja.ToModel())).First().Equipments.ToList().ForEach(e => strength += e.Strength);
-            }
-            return strength;
-        } 
+                int strength = 0;
 
-        public int GetTotalInteligence()
-        {
-            int inteligence = 0;
-
-            using (var context = new LeagueNinjasDBEntities())
-            {
-                context.Ninjas.Where(n => n.Equals(SelectedNinja.ToModel())).First().Equipments.ToList().ForEach(e => inteligence += e.Intelligence);
+                using (var context = new LeagueNinjasDBEntities())
+                {
+                    context.Ninjas.Where(n => n.Equals(SelectedNinja.ToModel())).First().Equipments.ToList().ForEach(e => strength += e.Strength);
+                }
+                return strength;
             }
-            return inteligence;
         }
 
-        public int GetTotalAgility()
+        public int GetTotalInteligence
         {
-            int agility = 0;
-
-            using (var context = new LeagueNinjasDBEntities())
+            get
             {
-                context.Ninjas.Where(n => n.Equals(SelectedNinja.ToModel())).First().Equipments.ToList().ForEach(e => agility += e.Agility);
-            }
-            return agility;
+                int inteligence = 0;
 
+                using (var context = new LeagueNinjasDBEntities())
+                {
+                    context.Ninjas.Where(n => n.Equals(SelectedNinja.ToModel())).First().Equipments.ToList().ForEach(e => inteligence += e.Intelligence);
+                }
+                return inteligence;
+            }
+        }
+
+        public int GetTotalAgility
+        {
+            get
+            {
+                int agility = 0;
+
+                using (var context = new LeagueNinjasDBEntities())
+                {
+                    context.Ninjas.Where(n => n.Equals(SelectedNinja.ToModel())).First().Equipments.ToList().ForEach(e => agility += e.Agility);
+                }
+                return agility;
+            }
         }
 
         public void UpdateNinjaEquipmentsCollection()
