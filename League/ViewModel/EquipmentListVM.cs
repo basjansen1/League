@@ -13,11 +13,19 @@ namespace League.ViewModel
     {
         AddEquipmentView _addEquipmentView;
         EditEquipmentView _editEquipmentView;
+
+        public EquipmentListVM()
+        {
+            using (var context = new LeagueNinjasDBEntities())
+            {
+                context.Equipments.ToList().ForEach(e => ItemList.Add(new EquipmentVM(e))); // Do by all VM Lists
+            }
+        }
         public override void DeleteItem()
         {
             using (var context = new LeagueNinjasDBEntities())
             {
-                context.Equipments.Remove(SelectedItem.ToModel());
+                context.Equipments.Where(e => e.Id == SelectedItem.Id).ToList().ForEach(s => context.Equipments.Remove(s));
                 context.SaveChanges();
             }
             ItemList.Remove(SelectedItem);
@@ -45,13 +53,14 @@ namespace League.ViewModel
             _editEquipmentView.Show();
         }
 
-        public List<EquipmentVM> getEquipmentsByCategory(string category)
+        public List<Equipment> getEquipmentsByCategory(string category)
         {
-            List<EquipmentVM> returnList;
+            List<Equipment> returnList;
 
             using (var context = new LeagueNinjasDBEntities())
             {
-                returnList = context.Equipments.Where(i => i.Category.Equals(category)).Select(e => new EquipmentVM(e)).ToList();
+                returnList = context.Equipments.Where(i => i.Category.Equals(category)).ToList();
+               // list.ForEach(e => new EquipmentVM(e)); 
             }
 
             return returnList;

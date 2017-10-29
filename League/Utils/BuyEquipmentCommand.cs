@@ -5,32 +5,50 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 
 namespace League.Utils
 {
     public class BuyEquipmentCommand : ICommand
     {
-        private InventoryVM _inventory;
-        public event EventHandler CanExecuteChanged;
-
-        public BuyEquipmentCommand(InventoryVM inventory)
+        private MarketPlaceVM _marketPlace;
+        public event EventHandler CanExecuteChanged
         {
-            _inventory = inventory;
+            add { CommandManager.RequerySuggested += value; }
+            remove { CommandManager.RequerySuggested -= value; }
+        }
+
+        public BuyEquipmentCommand(MarketPlaceVM marketPlace)
+        {
+            _marketPlace = marketPlace;
         }
 
         public bool CanExecute(object parameter) // An equipmentVM object will be passed into this parameter
         {
-            EquipmentVM newEquipmentVM = (EquipmentVM)parameter;
-
             using (var context = new LeagueNinjasDBEntities())
             {
-                var ninja = context.Ninjas.Where(n => n.Equals(_inventory.SelectedNinja.ToModel())).First(); // get selected ninja 
-                var equipmentsOfNinja = ninja.Equipments.Where(e => e.Category.Equals(newEquipmentVM.Category)).ToList(); // get selected ninja var equipmentsOfNinja = ninja.Select(n => n.Equipments.Where(e => e.Category.Equals(newEquipmentVM.Category))).ToList(); // get equipment of the selected ninja where the category equals the category of the newEquipment
-
-                if (equipmentsOfNinja.Count == 0 && _inventory.SelectedNinja.AmountOfGold >= newEquipmentVM.Price)
+                if (_marketPlace.EquipmentList.SelectedItem != null)
                 {
-                    return true;
+
+                    var ninja = context.Ninjas.Where(n => n.Id == _marketPlace.NinjaList.SelectedItem.Id).First();
+                    var equipmentsOfNinja = ninja.Equipments.Where(e => e.Category.Equals(_marketPlace.EquipmentList.SelectedItem.Category)).ToList();
+
+                    if (equipmentsOfNinja.Count == 0)
+                    {
+                        //   if (ninja.AmountGold >= _marketPlace.EquipmentList.SelectedItem.Price)
+                        //   {
+                        //       return true;
+                        //   } else
+                        //   {
+                        //        return false;
+                        //    }
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
                 } else
                 {
                     return false;
@@ -40,12 +58,11 @@ namespace League.Utils
 
         public void Execute(object parameter)
         {
-            EquipmentVM newEquipmentVM = (EquipmentVM)parameter;
-
             using (var context = new LeagueNinjasDBEntities())
             {
-                var ninja = context.Ninjas.Where(n => n.Equals(_inventory.SelectedNinja.ToModel())).First(); // get selected ninja
-                ninja.Equipments.Add(newEquipmentVM.ToModel());
+                var ninja = context.Ninjas.Where(n => n.Id == _marketPlace.NinjaList.SelectedItem.Id).First(); // get selected ninja
+                var equipment = _marketPlace.EquipmentList.SelectedItem.ToModel();
+                ninja.Equipments.Add(context.Equipments.Where(e => e.Id == equipment.Id).First());
 
                 context.SaveChanges();
             }

@@ -12,6 +12,14 @@ namespace League.ViewModel
     {
         private AddCategoryView _addView;
         private EditCategoryView _editView;
+
+        public CategoryListVM()
+        {
+            using (var context = new LeagueNinjasDBEntities())
+            {
+                context.Categories.ToList().ForEach(c => ItemList.Add(new CategoryVM(c))); // Do by all VM Lists
+            }
+        }
         public override void DeleteItem()
         {
             using (var context = new LeagueNinjasDBEntities())
