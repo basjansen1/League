@@ -45,13 +45,13 @@ namespace League.ViewModel
             _editEquipmentView.Show();
         }
 
-        public List<Equipment> getEquipmentsByCategory(Category category)
+        public List<EquipmentVM> getEquipmentsByCategory(string category)
         {
-            List<Equipment> returnList;
+            List<EquipmentVM> returnList;
 
             using (var context = new LeagueNinjasDBEntities())
             {
-                returnList = context.Equipments.Where(i => i.Category.Equals(category)).ToList();
+                returnList = context.Equipments.Where(i => i.Category.Equals(category)).Select(e => new EquipmentVM(e)).ToList();
             }
 
             return returnList;

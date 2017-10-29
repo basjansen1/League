@@ -58,6 +58,14 @@ namespace League.ViewModel
             return agility;
 
         }
+
+        public List<EquipmentVM> GetNinjaEquipments()
+        {
+            using (var context = new LeagueNinjasDBEntities())
+            {
+                return context.Ninjas.Where(n => n.Equals(SelectedNinja.ToModel())).First().Equipments.Select(e => new EquipmentVM(e)).ToList();
+            }
+        }
         
     }
 }

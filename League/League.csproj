@@ -110,7 +110,9 @@
     <Compile Include="Model\Ninja.cs">
       <DependentUpon>LeagueEntities.tt</DependentUpon>
     </Compile>
+    <Compile Include="Utils\BuyEquipmentCommand.cs" />
     <Compile Include="Utils\GoldConverter.cs" />
+    <Compile Include="Utils\SellEquipmentCommand.cs" />
     <Compile Include="ViewModel\AddCategoryVM.cs" />
     <Compile Include="ViewModel\AddEquipmentVM.cs" />
     <Compile Include="ViewModel\AddNinjaVM.cs" />
@@ -129,6 +131,7 @@
     <Compile Include="ViewModel\MarketPlaceVM.cs" />
     <Compile Include="ViewModel\NinjaListVM.cs" />
     <Compile Include="ViewModel\NinjaVM.cs" />
+    <Compile Include="Utils\SellAllItemsCommand.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />
     <Compile Include="View\AddCategoryView.xaml.cs">
       <DependentUpon>AddCategoryView.xaml</DependentUpon>
