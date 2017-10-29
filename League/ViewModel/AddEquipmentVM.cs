@@ -12,7 +12,7 @@ namespace League.ViewModel
 {
     public class AddEquipmentVM : AddVM<EquipmentListVM, EquipmentVM>
     {
-        public AddEquipmentVM(EquipmentListVM ViewModelList) 
+        public AddEquipmentVM(EquipmentListVM ViewModelList)
             : base(ViewModelList)
         {
             NewItem = new EquipmentVM();
@@ -41,36 +41,39 @@ namespace League.ViewModel
             {
                 MessageBox.Show("You have to give a name to the equipment!");
                 return false;
-            } else if (NewItem.Strength == 0)
+            }
+            else if (NewItem.Strength == 0)
             {
                 MessageBox.Show("You have to assign a strenght value higher than 0");
                 return false;
-            } else if (NewItem.Intelligence == 0)
+            }
+            else if (NewItem.Intelligence == 0)
             {
                 MessageBox.Show("You have to assign an intelligence value higher than 0");
                 return false;
-            } else if (NewItem.Agility == 0)
+            }
+            else if (NewItem.Agility == 0)
             {
                 MessageBox.Show("You have to assign an agility value higher than 0");
                 return false;
-            } else if (NewItem.Price == 0)
+            }
+            else if (NewItem.Price == 0)
             {
                 MessageBox.Show("You have to assign a price value higher than 0");
                 return false;
-            } else if (NewItem.Category != null || NewItem.SetCategory(NewItem.Category))
-            {
-                if(NewItem.Category != null)
-                {
-                    MessageBox.Show("You have to assign a category");
-                    return false;
-                } else
-                {
-                    MessageBox.Show("This category does not exists");
-                    return false;
-                }
             }
-            else
-                return true;
+            else if (NewItem.SetCategory(NewItem.Category) == false)
+            {
+                MessageBox.Show("This category does not exist!");
+                return false;
+            }
+            else if (NewItem.Category == null)
+            {
+                MessageBox.Show("You have to assign a category ");
+                return false;
+            }
+
+            return true;
         }
     }
 }
