@@ -12,34 +12,41 @@
     <StackPanel Orientation="Horizontal">
         <!-- Stackpanel voor de categorieen -->
         <StackPanel Width="150">
+            <TextBlock FontSize="30">Categories</TextBlock>
             <DataGrid AutoGenerateColumns="False" IsReadOnly="True" SelectedItem="{Binding CategoryList.SelectedItem, Mode=TwoWay}" ItemsSource="{Binding CategoryList.ItemList}">
-                <DataTemplate>
-                    <Button Content="{Binding NewItem.Strength}" Command="{Binding DataContext.ShowEditCommand, RelativeSource={RelativeSource AncestorType=DataGrid}}"/>
-                </DataTemplate>
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Select category" Binding="{Binding Name}" Width="*"> </DataGridTextColumn>
+                    <DataGridTemplateColumn Width="50">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Command="{Binding DataContext.UpdateCollectionCommand, RelativeSource={RelativeSource AncestorType=DataGrid}}"
+                                    BorderThickness="0,0,0,1" BorderBrush="#FF999A9B" Foreground="White" Margin="2" HorizontalAlignment="Center" VerticalAlignment="Center" Width="60" Height="30" Background="#FF6F9BDA">Select
+                                </Button>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
             </DataGrid>
         </StackPanel>
         
         <!-- Stackpanel met de te kopen equipments -->
         <StackPanel Width="300">
-            <DataGrid AutoGenerateColumns="False" IsReadOnly="True" SelectedItem="{Binding CategoryListVM, Mode=TwoWay}" ItemsSource="{Binding ItemList}">
-                <DataTemplate>
-                    <TextBlock Text="{Binding NewItem.Strength}" />
-                    <!-- stel juiste binding in. dit wordt deequipment omschrijving -->
-                </DataTemplate>
-                <DataTemplate>
-                    <TextBlock Text="{Binding NewItem.Strength}" />
-                    <!-- stel juiste binding in. dit wordt de gold worth -->
-                </DataTemplate>
+            <TextBlock FontSize="30">Equipments</TextBlock>
+            <DataGrid AutoGenerateColumns="False" IsReadOnly="True" SelectedItem="{Binding EquipmentList.SelectedItem, Mode=TwoWay}" ItemsSource="{Binding EquipentsOfSelectedCategoryCollection}">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Equipment" Binding="{Binding Name}" Width="*"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Price" Binding="{Binding Price}" Width="*"></DataGridTextColumn>
+                </DataGrid.Columns>
             </DataGrid>
         </StackPanel>
         
         <!-- Stackpanel voor het kopen van een item -->
         <StackPanel Width="300">
-            <TextBlock Text="{Binding SelectedItem.Name}" />
-            <TextBlock Text="{Binding SelectedItem.Strength}" />
-            <TextBlock Text="{Binding SelectedItem.Agility}" />
-            <TextBlock Text="{Binding SelectedItem.Price}" />
-            <Button Command="{Binding DataContext.ShowEditCommand}">Buy</Button>
+            <TextBlock Text="{Binding SelectedItem.Name, UpdateSourceTrigger=PropertyChanged}" />
+            <TextBlock Text="{Binding SelectedItem.Strength, UpdateSourceTrigger=PropertyChanged}" />
+            <TextBlock Text="{Binding SelectedItem.Agility, UpdateSourceTrigger=PropertyChanged}" />
+            <TextBlock Text="{Binding SelectedItem.Price, UpdateSourceTrigger=PropertyChanged}" />
+            <Button Command="{Binding DataContext.Inventory.BuyEquipmentCommand}">Buy</Button>
             <TextBlock Text="You have x gold left" /> <!-- Bij de x haal de resterende aantal goud op van de gebruiker -->
         </StackPanel>
     </StackPanel>
