@@ -1,5 +1,6 @@
 ﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
+using League.Utils;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -18,6 +19,7 @@ namespace League.ViewModel
         public InventoryVM Inventory { get; set; }
         public ObservableCollection<EquipmentVM> EquipentsOfSelectedCategoryCollection { get; set; }
         public ICommand UpdateCollectionCommand { get; set; } // When a category is selected, the equipmentsdatagrid has to be updated
+        public ICommand BuyEquipmentCommand { get; set; }
         public MarketPlaceVM(CategoryListVM categoryList, EquipmentListVM equipmentVM, NinjaListVM ninjaList, InventoryVM inventory)
         {
             CategoryList = categoryList;
@@ -26,6 +28,7 @@ namespace League.ViewModel
             Inventory = inventory;
             EquipentsOfSelectedCategoryCollection = new ObservableCollection<EquipmentVM>();
             UpdateCollectionCommand = new RelayCommand(UpdateEquipmentCollection);
+            BuyEquipmentCommand = new BuyEquipmentCommand(this);
         }
 
         public void UpdateEquipmentCollection()

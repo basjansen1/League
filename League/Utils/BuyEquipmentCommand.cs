@@ -11,26 +11,30 @@ namespace League.Utils
 {
     public class BuyEquipmentCommand : ICommand
     {
-        private InventoryVM _inventory;
+        private MarketPlaceVM _marketPlace;
         public event EventHandler CanExecuteChanged;
 
-        public BuyEquipmentCommand(InventoryVM inventory)
+        public BuyEquipmentCommand(MarketPlaceVM marketPlace)
         {
-            _inventory = inventory;
+            _marketPlace = marketPlace;
         }
 
         public bool CanExecute(object parameter) // An equipmentVM object will be passed into this parameter
         {
-            EquipmentVM newEquipmentVM = (EquipmentVM)parameter;
-
             using (var context = new LeagueNinjasDBEntities())
             {
-                var ninja = context.Ninjas.Where(n => n.Equals(_inventory.SelectedNinja.ToModel())).First(); // get selected ninja 
-                var equipmentsOfNinja = ninja.Equipments.Where(e => e.Category.Equals(newEquipmentVM.Category)).ToList(); // get selected ninja var equipmentsOfNinja = ninja.Select(n => n.Equipments.Where(e => e.Category.Equals(newEquipmentVM.Category))).ToList(); // get equipment of the selected ninja where the category equals the category of the newEquipment
+                var ninja = context.Ninjas.Where(n => n.Equals(_marketPlace.NinjaList.SelectedItem.ToModel())).First(); // get selected ninja 
+                var equipmentsOfNinja = ninja.Equipments.Where(e => e.Category.Equals(_marketPlace.EquipmentList.SelectedItem.Category)).First(); // get selected ninja var equipmentsOfNinja
 
-                if (equipmentsOfNinja.Count == 0 && _inventory.SelectedNinja.AmountOfGold >= newEquipmentVM.Price)
+                if (equipmentsOfNinja == null)
                 {
-                    return true;
+                   if (ninja.AmountGold >= equipmentsOfNinja.Price)
+                    {
+                        return true;
+                    } else
+                    {
+                        return false;
+                    }
                 } else
                 {
                     return false;
@@ -40,12 +44,10 @@ namespace League.Utils
 
         public void Execute(object parameter)
         {
-            EquipmentVM newEquipmentVM = (EquipmentVM)parameter;
-
             using (var context = new LeagueNinjasDBEntities())
             {
-                var ninja = context.Ninjas.Where(n => n.Equals(_inventory.SelectedNinja.ToModel())).First(); // get selected ninja
-                ninja.Equipments.Add(newEquipmentVM.ToModel());
+                var ninja = context.Ninjas.Where(n => n.Equals(_marketPlace.NinjaList.SelectedItem.ToModel())).First(); // get selected ninja
+                ninja.Equipments.Add(_marketPlace.EquipmentList.SelectedItem.ToModel());
 
                 context.SaveChanges();
             }

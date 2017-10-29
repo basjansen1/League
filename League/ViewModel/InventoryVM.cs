@@ -21,7 +21,7 @@ namespace League.ViewModel
 
         public ICommand GoToMarketCommand { get; set; }
         public ICommand SellAllItemsCommand { get; set; }
-        public ICommand BuyEquipmentCommand { get; set; }
+     //   public ICommand BuyEquipmentCommand { get; set; }
         public ICommand SellEquipmentCommand { get; set; }
 
         public ObservableCollection<EquipmentVM> NinjaEquipmentsCollection { get; set; }
@@ -30,7 +30,7 @@ namespace League.ViewModel
         {
             SelectedNinja = selectedNinja;
             SellAllItemsCommand = new SellAllItemsCommand(this);
-            BuyEquipmentCommand = new BuyEquipmentCommand(this);
+     //       BuyEquipmentCommand = new BuyEquipmentCommand(this);
             SellEquipmentCommand = new SellEquipmentCommand(this);
             GoToMarketCommand = new RelayCommand(OpenMarketView);
             NinjaEquipmentsCollection = new ObservableCollection<EquipmentVM>();

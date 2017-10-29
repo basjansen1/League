@@ -11,17 +11,17 @@
     <StackPanel>
         <TextBlock FontSize="30">EditEquipmentView</TextBlock>
         <TextBlock TextAlignment="Center" FontSize="12">Name</TextBlock>
-        <TextBox Text="{Binding SelectedItem.Name }" TextAlignment="Center"></TextBox>
+        <TextBox Text="{Binding ItemToBeEdited.Name }" TextAlignment="Center"></TextBox>
         <TextBlock TextAlignment="Center" FontSize="12">Strength</TextBlock>
-        <TextBox Text="{Binding SelectedItem.Strength }" TextAlignment="Center"></TextBox>
+        <TextBox Text="{Binding ItemToBeEdited.Strength }" TextAlignment="Center"></TextBox>
         <TextBlock TextAlignment="Center" FontSize="12">Intelligence</TextBlock>
-        <TextBox Text="{Binding SelectedItem.Intelligence }" TextAlignment="Center"></TextBox>
+        <TextBox Text="{Binding ItemToBeEdited.Intelligence }" TextAlignment="Center"></TextBox>
         <TextBlock TextAlignment="Center" FontSize="12">Agility</TextBlock>
-        <TextBox Text="{Binding SelectedItem.Agility}" TextAlignment="Center"></TextBox>
+        <TextBox Text="{Binding ItemToBeEdited.Agility}" TextAlignment="Center"></TextBox>
         <TextBlock TextAlignment="Center" FontSize="12">Price</TextBlock>
-        <TextBox Text="{Binding SelectedItem.Price }" TextAlignment="Center"></TextBox>
+        <TextBox Text="{Binding ItemToBeEdited.Price }" TextAlignment="Center"></TextBox>
         <TextBlock TextAlignment="Center" FontSize="12">Category</TextBlock>
-        <TextBox Text="{Binding SelectedItem.Category}" TextAlignment="Center"></TextBox>
+        <TextBox Text="{Binding ItemToBeEdited.Category}" TextAlignment="Center"></TextBox>
         <Button Command="{Binding EditCommand}" CommandParameter="{Binding ElementName=EditWindow}">Save equipment</Button>
     </StackPanel>
 </Window>
