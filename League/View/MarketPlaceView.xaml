@@ -73,7 +73,7 @@
             <TextBlock Text="{Binding Path=EquipmentList.SelectedItem.Strength, UpdateSourceTrigger=PropertyChanged}" />
             <TextBlock Text="{Binding Path=EquipmentList.SelectedItem.Agility, UpdateSourceTrigger=PropertyChanged}" />
             <TextBlock Text="{Binding Path=EquipmentList.SelectedItem.Price, UpdateSourceTrigger=PropertyChanged}" />
-            <Button Command="{Binding DataContext.BuyEquipmentCommand}">Buy</Button>
+            <Button Command="{Binding BuyEquipmentCommand}">Buy</Button>
             <TextBlock Text="You have x gold left" /> <!-- Bij de x haal de resterende aantal goud op van de gebruiker -->
         </StackPanel>
     </StackPanel>
