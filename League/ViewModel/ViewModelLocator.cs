@@ -127,6 +127,14 @@ namespace League.ViewModel
             }
         }
 
+        public InventoryVM GetInventoryVM
+        {
+            get
+            {
+                return new InventoryVM(GetNinjaList.SelectedItem);
+            }
+        }
+
         public static void Cleanup()
         {
             // TODO Clear the ViewModels
