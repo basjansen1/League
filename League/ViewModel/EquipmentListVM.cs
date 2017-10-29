@@ -25,7 +25,7 @@ namespace League.ViewModel
         {
             using (var context = new LeagueNinjasDBEntities())
             {
-                context.Equipments.Remove(SelectedItem.ToModel());
+                context.Equipments.Where(e => e.Id == SelectedItem.Id).ToList().ForEach(s => context.Equipments.Remove(s));
                 context.SaveChanges();
             }
             ItemList.Remove(SelectedItem);
