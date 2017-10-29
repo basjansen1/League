@@ -43,6 +43,8 @@ namespace League.ViewModel
             ////}
 
             SimpleIoc.Default.Register<NinjaListVM>();
+            SimpleIoc.Default.Register<CategoryListVM>();
+            SimpleIoc.Default.Register<EquipmentListVM>();
         }
 
         public NinjaListVM GetNinjaList

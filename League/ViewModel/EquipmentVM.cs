@@ -126,13 +126,13 @@ namespace League.ViewModel
 
             using (var context = new LeagueNinjasDBEntities())
             {
-                if (context.Categories.Contains(category))
-                {
+                //var list = context.Categories.Select(i => i.Name).ToList();
+                bool exists = context.Categories.Any(c => c.Name == category.Name);
+
+                if (exists)
                     return true;
-                } else
-                {
+                else
                     return false;
-                }
             }
         }
     }

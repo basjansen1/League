@@ -112,6 +112,7 @@
     </Compile>
     <Compile Include="Utils\BuyEquipmentCommand.cs" />
     <Compile Include="Utils\GoldConverter.cs" />
+    <Compile Include="Utils\SellAllItemsCommand.cs" />
     <Compile Include="Utils\SellEquipmentCommand.cs" />
     <Compile Include="ViewModel\AddCategoryVM.cs" />
     <Compile Include="ViewModel\AddEquipmentVM.cs" />
