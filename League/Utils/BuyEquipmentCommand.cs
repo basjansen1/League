@@ -28,21 +28,27 @@ namespace League.Utils
         {
             using (var context = new LeagueNinjasDBEntities())
             {
-              //  var ninja = context.Ninjas.Where(n => n.Equals(_marketPlace.NinjaList.SelectedItem.ToModel())).First(); // get selected ninja 
-                var ninja = context.Ninjas.Where(n => n.Id == _marketPlace.NinjaList.SelectedItem.Id).First();
-             //   var equipmentsOfNinja = ninja.Equipments.Where(e => e.Category.Equals(_marketPlace.EquipmentList.SelectedItem.Category)).First(); // get selected ninja var equipmentsOfNinja
-                var equipmentsOfNinja = ninja.Equipments.Where(e => e.Category.Equals(_marketPlace.EquipmentList.SelectedItem.Category)).ToList(); 
-
-                if (equipmentsOfNinja.Count == 0)
+                if (_marketPlace.EquipmentList.SelectedItem != null)
                 {
-                    //   if (ninja.AmountGold >= _marketPlace.EquipmentList.SelectedItem.Price)
-                    //   {
-                    //       return true;
-                    //   } else
-                    //   {
-                    //        return false;
-                    //    }
-                    return true;
+
+                    var ninja = context.Ninjas.Where(n => n.Id == _marketPlace.NinjaList.SelectedItem.Id).First();
+                    var equipmentsOfNinja = ninja.Equipments.Where(e => e.Category.Equals(_marketPlace.EquipmentList.SelectedItem.Category)).ToList();
+
+                    if (equipmentsOfNinja.Count == 0)
+                    {
+                        //   if (ninja.AmountGold >= _marketPlace.EquipmentList.SelectedItem.Price)
+                        //   {
+                        //       return true;
+                        //   } else
+                        //   {
+                        //        return false;
+                        //    }
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
                 } else
                 {
                     return false;
@@ -56,7 +62,7 @@ namespace League.Utils
             {
                 var ninja = context.Ninjas.Where(n => n.Id == _marketPlace.NinjaList.SelectedItem.Id).First(); // get selected ninja
                 var equipment = _marketPlace.EquipmentList.SelectedItem.ToModel();
-                ninja.Equipments.Add(equipment);
+                ninja.Equipments.Add(context.Equipments.Where(e => e.Id == equipment.Id).First());
 
                 context.SaveChanges();
             }
