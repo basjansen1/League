@@ -8,8 +8,8 @@
         Title="InventoryView" Height="600" Width="400"
         DataContext="{Binding GetInventoryVM, Source= {StaticResource Locator}}">
     <Grid>
-        <TextBlock Text="{Binding NinjaEquipmentsCollection.Name}" HorizontalAlignment="Left" Margin="20, 20, 20, 20"></TextBlock>
-        <TextBlock Text="{Binding NinjaEquipmentsCollection.Strength}" HorizontalAlignment="Left" Margin="20, 35, 20, 20"></TextBlock>
+        <TextBlock Text="{Binding NinjaEquipmentsCollection.EquipmentVM.Name}" HorizontalAlignment="Left" Margin="20, 20, 20, 20"></TextBlock>
+        <TextBlock Text="{Binding NinjaEquipmentsCollection.EquipmentVM.Strength}" HorizontalAlignment="Left" Margin="20, 35, 20, 20"></TextBlock>
 
         <TextBlock Text="{Binding NinjaEquipmentsCollection.Name}" HorizontalAlignment="Left" Margin="20, 200, 20, 20"></TextBlock>
         <TextBlock Text="{Binding NinjaEquipmentsCollection.Strength}" HorizontalAlignment="Left" Margin="20, 215, 20, 20"></TextBlock>

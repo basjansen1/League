@@ -42,38 +42,32 @@ namespace League.ViewModel
             }
         }
 
-        public int GetTotalStrenght2()
+        public int GetTotalInteligence
         {
-            int strength = 0;
-
-            using (var context = new LeagueNinjasDBEntities())
+            get
             {
-                context.Ninjas.Where(n => n.Equals(SelectedNinja.ToModel())).First().Equipments.ToList().ForEach(e => strength += e.Strength);
-            }
-            return strength;
-        } 
+                int inteligence = 0;
 
-        public int GetTotalInteligence()
-        {
-            int inteligence = 0;
-
-            using (var context = new LeagueNinjasDBEntities())
-            {
-                context.Ninjas.Where(n => n.Equals(SelectedNinja.ToModel())).First().Equipments.ToList().ForEach(e => inteligence += e.Intelligence);
+                using (var context = new LeagueNinjasDBEntities())
+                {
+                    context.Ninjas.Where(n => n.Equals(SelectedNinja.ToModel())).First().Equipments.ToList().ForEach(e => inteligence += e.Intelligence);
+                }
+                return inteligence;
             }
-            return inteligence;
         }
 
-        public int GetTotalAgility()
+        public int GetTotalAgility
         {
-            int agility = 0;
-
-            using (var context = new LeagueNinjasDBEntities())
+            get
             {
-                context.Ninjas.Where(n => n.Equals(SelectedNinja.ToModel())).First().Equipments.ToList().ForEach(e => agility += e.Agility);
-            }
-            return agility;
+                int agility = 0;
 
+                using (var context = new LeagueNinjasDBEntities())
+                {
+                    context.Ninjas.Where(n => n.Equals(SelectedNinja.ToModel())).First().Equipments.ToList().ForEach(e => agility += e.Agility);
+                }
+                return agility;
+            }
         }
 
         public void UpdateNinjaEquipmentsCollection()
