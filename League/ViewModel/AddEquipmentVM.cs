@@ -51,7 +51,7 @@ namespace League.ViewModel
 
         public override bool CanAdd()
         {
-            if (NewItem.Name == null)
+            if (NewItem.Name == "")
             {
                 MessageBox.Show("You have to give a name to the equipment!");
                 return false;
@@ -81,7 +81,7 @@ namespace League.ViewModel
                 MessageBox.Show("This category does not exist!");
                 return false;
             }
-            else if (NewItem.Category == null)
+            else if (NewItem.Category == "")
             {
                 MessageBox.Show("You have to assign a category ");
                 return false;

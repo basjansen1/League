@@ -45,8 +45,8 @@ namespace League.ViewModel
 
         public override bool CanEdit()
         {
-            if(ItemToBeEdited.Name != null 
-                && ItemToEditCategory == null 
+            if(ItemToBeEdited.Name != "" 
+                && ItemToEditCategory == "" 
                 && ItemToBeEdited.Agility != 0
                 && ItemToBeEdited.Intelligence != 0 
                 && ItemToBeEdited.Price != 0

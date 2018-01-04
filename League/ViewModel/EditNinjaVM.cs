@@ -30,13 +30,19 @@ namespace League.ViewModel
                     context.Entry(ninja).State = EntityState.Modified;
                     context.SaveChanges();
                 }
+                window.Close();
             }
-            window.Close();
         }
 
         public override bool CanEdit()
         {
-            return true;
+            if (ItemToBeEdited.Name != "" && ItemToBeEdited.AmountOfGold != 0)
+                return true;
+            else
+            {
+                MessageBox.Show("Please enter all fields");
+                return false;
+            }
         }
     }
 }
