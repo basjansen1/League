@@ -18,7 +18,7 @@ namespace League.ViewModel
         {
             using (var context = new LeagueNinjasDBEntities())
             {
-                context.Equipments.ToList().ForEach(e => ItemList.Add(new EquipmentVM(e))); // Do by all VM Lists
+                context.Equipments.Include("Ninjas").ToList().ForEach(e => ItemList.Add(new EquipmentVM(e))); // Do by all VM Lists
             }
         }
         public override void DeleteItem()

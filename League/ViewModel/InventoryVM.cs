@@ -80,11 +80,6 @@ namespace League.ViewModel
 
         public void UpdateNinjaEquipmentsCollection()
         {
-            //NinjaEquipmentsCollection.Clear();
-            //using (var context = new LeagueNinjasDBEntities())
-            //{
-            //    SelectedNinja.ToModel().Equipments.Select(e => new EquipmentVM(e)).ToList().ForEach(e => NinjaEquipmentsCollection.Add(e));
-            //}
             RaisePropertyChanged(() => GetTotalStrenght);
             RaisePropertyChanged(() => GetTotalInteligence);
             RaisePropertyChanged(() => GetTotalAgility);

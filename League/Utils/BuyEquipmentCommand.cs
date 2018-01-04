@@ -2,6 +2,7 @@
 using League.ViewModel;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -38,8 +39,6 @@ namespace League.Utils
                     {
                            if (ninja.AmountGold >= _marketPlace.EquipmentList.SelectedItem.Price)
                            {
-                            ninja.AmountGold -= _marketPlace.EquipmentList.SelectedItem.Price;
-                            context.SaveChanges();
                                return true;
                            } else
                            {
@@ -61,10 +60,13 @@ namespace League.Utils
         {
             using (var context = new LeagueNinjasDBEntities())
             {
-                var ninja = context.Ninjas.Where(n => n.Id == _marketPlace.NinjaList.SelectedItem.Id).First(); // get selected ninja
+                var ninja = context.Ninjas.Find(_marketPlace.NinjaList.SelectedItem.Id); // get selected ninja
                 var equipment = _marketPlace.EquipmentList.SelectedItem.ToModel();
-                ninja.Equipments.Add(context.Equipments.Where(e => e.Id == equipment.Id).First());
+                ninja.Equipments.Add(context.Equipments.Find(equipment.Id));
 
+                _marketPlace.NinjaList.SelectedItem.AmountOfGold -= _marketPlace.EquipmentList.SelectedItem.Price;
+                context.Entry(ninja).State = EntityState.Modified;
+                
                 context.SaveChanges();
                 _marketPlace.Inventory.AddEquipmentToCollection(equipment);
             }
