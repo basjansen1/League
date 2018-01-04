@@ -65,6 +65,7 @@ namespace League.Utils
                 ninja.Equipments.Add(context.Equipments.Where(e => e.Id == equipment.Id).First());
 
                 context.SaveChanges();
+                _marketPlace.Inventory.AddEquipmentToCollection(equipment);
             }
         }
     }

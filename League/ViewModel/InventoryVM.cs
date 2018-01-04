@@ -21,7 +21,6 @@ namespace League.ViewModel
 
         public ICommand GoToMarketCommand { get; set; }
         public ICommand SellAllItemsCommand { get; set; }
-     //   public ICommand BuyEquipmentCommand { get; set; }
         public ICommand SellEquipmentCommand { get; set; }
 
         public ObservableCollection<EquipmentVM> NinjaEquipmentsCollection { get; set; }
@@ -30,11 +29,13 @@ namespace League.ViewModel
         {
             SelectedNinja = selectedNinja;
             SellAllItemsCommand = new SellAllItemsCommand(this);
-     //       BuyEquipmentCommand = new BuyEquipmentCommand(this);
             SellEquipmentCommand = new SellEquipmentCommand(this);
             GoToMarketCommand = new RelayCommand(OpenMarketView);
             NinjaEquipmentsCollection = new ObservableCollection<EquipmentVM>();
-            UpdateNinjaEquipmentsCollection();
+            using (var context = new LeagueNinjasDBEntities())
+            {
+                SelectedNinja.ToModel().Equipments.Select(e => new EquipmentVM(e)).ToList().ForEach(e => NinjaEquipmentsCollection.Add(e));
+            }
         }
 
         public int GetTotalStrenght
@@ -42,12 +43,7 @@ namespace League.ViewModel
             get
             {
                 int strength = 0;
-
-                using (var context = new LeagueNinjasDBEntities())
-                {
-                    Ninja ninja = SelectedNinja.ToModel();
-                    ninja.Equipments.ToList().ForEach(e => strength += e.Strength);
-                }
+                NinjaEquipmentsCollection.ToList().ForEach(e => strength += e.Strength);
                 return strength;
             }
         }
@@ -57,12 +53,7 @@ namespace League.ViewModel
             get
             {
                 int inteligence = 0;
-
-                using (var context = new LeagueNinjasDBEntities())
-                {
-                    Ninja ninja = SelectedNinja.ToModel();
-                    context.Ninjas.Where(n => n.Id == ninja.Id).First().Equipments.ToList().ForEach(e => inteligence += e.Intelligence);
-                }
+                NinjaEquipmentsCollection.ToList().ForEach(e => inteligence += e.Intelligence);
                 return inteligence;
             }
         }
@@ -72,12 +63,7 @@ namespace League.ViewModel
             get
             {
                 int agility = 0;
-
-                using (var context = new LeagueNinjasDBEntities())
-                {
-                    Ninja ninja = SelectedNinja.ToModel();
-                    context.Ninjas.Where(n => n.Id == ninja.Id).First().Equipments.ToList().ForEach(e => agility += e.Agility);
-                }
+                NinjaEquipmentsCollection.ToList().ForEach(e => agility += e.Agility);
                 return agility;
             }
         }
@@ -87,27 +73,28 @@ namespace League.ViewModel
             get
             {
                 int worth = 0;
-
-                using (var context = new LeagueNinjasDBEntities())
-                {
-                    Ninja ninja = SelectedNinja.ToModel();
-                    context.Ninjas.Where(n => n.Id == ninja.Id).First().Equipments.ToList().ForEach(e => worth += e.Price);
-                }
+                NinjaEquipmentsCollection.ToList().ForEach(e => worth += e.Price);
                 return worth;
             }
         }
 
         public void UpdateNinjaEquipmentsCollection()
         {
-            NinjaEquipmentsCollection.Clear();
-            using (var context = new LeagueNinjasDBEntities())
-            {
-                SelectedNinja.ToModel().Equipments.Select(e => new EquipmentVM(e)).ToList().ForEach(e => NinjaEquipmentsCollection.Add(e));
-            }
+            //NinjaEquipmentsCollection.Clear();
+            //using (var context = new LeagueNinjasDBEntities())
+            //{
+            //    SelectedNinja.ToModel().Equipments.Select(e => new EquipmentVM(e)).ToList().ForEach(e => NinjaEquipmentsCollection.Add(e));
+            //}
             RaisePropertyChanged(() => GetTotalStrenght);
             RaisePropertyChanged(() => GetTotalInteligence);
             RaisePropertyChanged(() => GetTotalAgility);
             RaisePropertyChanged(() => GetTotalWorth);
+        }
+
+        public void AddEquipmentToCollection(Equipment equipment)
+        {
+            NinjaEquipmentsCollection.Add(new EquipmentVM(equipment));
+            UpdateNinjaEquipmentsCollection();
         }
 
         private void OpenMarketView()
