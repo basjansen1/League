@@ -13,9 +13,14 @@ namespace League.ViewModel
     public class EditEquipmentVM : EditVM<EquipmentVM, EditEquipmentView>
     {
         public string ItemToEditCategory { get; set; }
+        public List<Category> CategoryList { get; set; }
 
         public EditEquipmentVM(EquipmentVM Item) : base(Item)
         {
+            using (var context = new LeagueNinjasDBEntities())
+            {
+                CategoryList = context.Categories.ToList();
+            }
         }
 
         public override void EditItem(EditEquipmentView window)
