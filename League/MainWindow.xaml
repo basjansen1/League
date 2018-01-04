@@ -15,7 +15,7 @@
             </Grid.ColumnDefinitions>
 
             <TextBlock Text="Ninja Collection" FontSize="28" Grid.Column="0"/>
-            
+
             <Button Width="50" Height="50" FontSize="28" Content="+" 
                         Foreground="White" FontWeight="Bold" Background="#FF44AE3F" 
                         Grid.Column="1"  Command="{Binding ShowAddCommand}">

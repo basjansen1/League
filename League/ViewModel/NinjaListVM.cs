@@ -24,7 +24,7 @@ namespace League.ViewModel
         {
             using (var context = new LeagueNinjasDBEntities())
             {
-                context.Ninjas.ToList().ForEach(n => ItemList.Add(new NinjaVM(n))); // Do by all VM Lists
+                context.Ninjas.Include("Equipments").ToList().ForEach(n => ItemList.Add(new NinjaVM(n))); // Do by all VM Lists
             }
             ShowInventoryViewCommand = new RelayCommand(ShowInventoryWindow);
         }
@@ -33,7 +33,8 @@ namespace League.ViewModel
         {
             using (var context = new LeagueNinjasDBEntities())
             {
-                context.Ninjas.Where(n => n.Id == SelectedItem.Id).ToList().ForEach(s => context.Ninjas.Remove(s));
+                context.Ninjas.Attach(SelectedItem.ToModel()); 
+                context.Ninjas.Remove(SelectedItem.ToModel());
                 context.SaveChanges();
             }
 
