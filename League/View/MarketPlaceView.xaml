@@ -5,10 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:League.View"
         xmlns:vm="clr-namespace:League.ViewModel"
+        xmlns:utils="clr-namespace:League.Utils"
         mc:Ignorable="d"
         Title="MarketPlaceView" Height="375" Width="750"
         DataContext="{Binding GetMarketPlaceVM, Source={StaticResource Locator}}">
-    
+    <Window.Resources>
+        <utils:GoldToEuroConverter x:Key="converter"/>
+    </Window.Resources>
+
     <StackPanel Orientation="Horizontal">
         <!-- Stackpanel voor de categorieen -->
         <StackPanel Width="150">
@@ -77,6 +81,8 @@
             <Button Command="{Binding BuyEquipmentCommand}">Buy</Button>
             <TextBlock Text="Gold left:" />
             <TextBlock Text="{Binding NinjaList.SelectedItem.AmountOfGold}" />
+            <TextBlock Text="Euro worth:" />
+            <TextBlock Text="{Binding NinjaList.SelectedItem.AmountOfGold, Converter={StaticResource converter}}" />
         </StackPanel>
     </StackPanel>
 </Window>

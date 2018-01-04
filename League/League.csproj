@@ -114,6 +114,7 @@
     <Compile Include="Utils\GoldConverter.cs" />
     <Compile Include="Utils\SellAllItemsCommand.cs" />
     <Compile Include="Utils\SellEquipmentCommand.cs" />
+    <Compile Include="Utils\GoldToEuroConverter.cs" />
     <Compile Include="ViewModel\AddCategoryVM.cs" />
     <Compile Include="ViewModel\AddEquipmentVM.cs" />
     <Compile Include="ViewModel\AddNinjaVM.cs" />
