@@ -13,6 +13,7 @@ namespace League.ViewModel
     public class AddEquipmentVM : AddVM<EquipmentListVM, EquipmentVM>
     {
         public List<Category> CategoryList { get; set; }
+        public List<string> CategoryNamesList { get; set; }
         public string FirstCategory { get; set; }
 
         public AddEquipmentVM(EquipmentListVM ViewModelList)
@@ -24,9 +25,11 @@ namespace League.ViewModel
             using (var context = new LeagueNinjasDBEntities())
             {
                 CategoryList = context.Categories.ToList();
+
+                CategoryNamesList = CategoryList.Select(c => c.Name).ToList();
             }
 
-            FirstCategory = CategoryList.First().Name;
+            FirstCategory = CategoryNamesList.First();
         }
 
         public override void AddItem()
@@ -48,7 +51,7 @@ namespace League.ViewModel
 
         public override bool CanAdd()
         {
-            if (NewItem.Name == null)
+            if (NewItem.Name == "")
             {
                 MessageBox.Show("You have to give a name to the equipment!");
                 return false;
@@ -78,7 +81,7 @@ namespace League.ViewModel
                 MessageBox.Show("This category does not exist!");
                 return false;
             }
-            else if (NewItem.Category == null)
+            else if (NewItem.Category == "")
             {
                 MessageBox.Show("You have to assign a category ");
                 return false;
