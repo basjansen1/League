@@ -24,26 +24,27 @@ namespace League.Utils
             _marketPlace = marketPlace;
         }
 
-        public bool CanExecute(object parameter) // An equipmentVM object will be passed into this parameter
+        public bool CanExecute(object parameter)
         {
             using (var context = new LeagueNinjasDBEntities())
             {
                 if (_marketPlace.EquipmentList.SelectedItem != null)
                 {
 
-                    var ninja = context.Ninjas.Where(n => n.Id == _marketPlace.NinjaList.SelectedItem.Id).First();
+                    var ninja = context.Ninjas.Find(_marketPlace.NinjaList.SelectedItem.Id);
                     var equipmentsOfNinja = ninja.Equipments.Where(e => e.Category.Equals(_marketPlace.EquipmentList.SelectedItem.Category)).ToList();
 
                     if (equipmentsOfNinja.Count == 0)
                     {
-                        //   if (ninja.AmountGold >= _marketPlace.EquipmentList.SelectedItem.Price)
-                        //   {
-                        //       return true;
-                        //   } else
-                        //   {
-                        //        return false;
-                        //    }
-                        return true;
+                           if (ninja.AmountGold >= _marketPlace.EquipmentList.SelectedItem.Price)
+                           {
+                            ninja.AmountGold -= _marketPlace.EquipmentList.SelectedItem.Price;
+                            context.SaveChanges();
+                               return true;
+                           } else
+                           {
+                                return false;
+                            }
                     }
                     else
                     {
