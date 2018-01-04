@@ -12,12 +12,23 @@ namespace League.ViewModel
 {
     public class AddEquipmentVM : AddVM<EquipmentListVM, EquipmentVM>
     {
+        public List<Category> CategoryList { get; set; }
+        public string FirstCategory { get; set; }
+
         public AddEquipmentVM(EquipmentListVM ViewModelList)
             : base(ViewModelList)
         {
             NewItem = new EquipmentVM();
             VMList = ViewModelList;
+
+            using (var context = new LeagueNinjasDBEntities())
+            {
+                CategoryList = context.Categories.ToList();
+            }
+
+            FirstCategory = CategoryList.First().Name;
         }
+
         public override void AddItem()
         {
             if (CanAdd())
