@@ -20,7 +20,7 @@
         <TextBlock TextAlignment="Center" FontSize="12">Price</TextBlock>
         <TextBox Text="{Binding NewItem.Price }" TextAlignment="Center"></TextBox>
         <TextBlock TextAlignment="Center" FontSize="12">Category</TextBlock>
-        <ComboBox ItemsSource="{Binding CategoryList}" SelectedItem="{Binding FirstCategory}" Grid.Row="2"></ComboBox>
+        <ComboBox ItemsSource="{Binding CategoryNamesList}" SelectedItem="{Binding FirstCategory}" Grid.Row="2"></ComboBox>
         <Button Command="{Binding AddCommand }">Save equipment</Button>
     </StackPanel>
 </Window>

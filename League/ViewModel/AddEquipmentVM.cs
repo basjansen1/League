@@ -13,6 +13,7 @@ namespace League.ViewModel
     public class AddEquipmentVM : AddVM<EquipmentListVM, EquipmentVM>
     {
         public List<Category> CategoryList { get; set; }
+        public List<string> CategoryNamesList { get; set; }
         public string FirstCategory { get; set; }
 
         public AddEquipmentVM(EquipmentListVM ViewModelList)
@@ -24,9 +25,11 @@ namespace League.ViewModel
             using (var context = new LeagueNinjasDBEntities())
             {
                 CategoryList = context.Categories.ToList();
+
+                CategoryNamesList = CategoryList.Select(c => c.Name).ToList();
             }
 
-            FirstCategory = CategoryList.First().Name;
+            FirstCategory = CategoryNamesList.First();
         }
 
         public override void AddItem()

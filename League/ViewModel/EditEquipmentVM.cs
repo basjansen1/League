@@ -14,13 +14,19 @@ namespace League.ViewModel
     {
         public string ItemToEditCategory { get; set; }
         public List<Category> CategoryList { get; set; }
+        public List<string> CategoryNamesList { get; set; }
+        public string FirstCategory { get; set; }
 
         public EditEquipmentVM(EquipmentVM Item) : base(Item)
         {
             using (var context = new LeagueNinjasDBEntities())
             {
                 CategoryList = context.Categories.ToList();
+
+                CategoryNamesList = CategoryList.Select(c => c.Name).ToList();
             }
+
+            FirstCategory = CategoryNamesList.First();
         }
 
         public override void EditItem(EditEquipmentView window)
