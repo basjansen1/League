@@ -16,6 +16,5 @@
         <TextBlock TextAlignment="Center" FontSize="12">Gold worth</TextBlock>
         <TextBox Text="{Binding ItemToBeEdited.AmountOfGold}" TextAlignment="Center"></TextBox>
         <Button Command="{Binding EditCommand}" CommandParameter="{Binding ElementName=EditNinjaWindow}">Save changes</Button>
-        <DatePicker x:Name="dpStartDate" FirstDayOfWeek="Monday" Cursor="Hand" Grid.Column="1" DisplayDateStart="{x:Static sys:DateTime.Now}"/>
     </StackPanel>
 </Window>
