@@ -50,7 +50,7 @@ namespace League.ViewModel
                 return true;
             else
             {
-                MessageBox.Show("Please enter all fields!");
+                MessageBox.Show("Fields may not have an empty value or a value equal to 0!");
                 return false;
             }
         }

@@ -92,6 +92,12 @@ namespace League.ViewModel
             UpdateNinjaEquipmentsCollection();
         }
 
+        public void RemoveEquipmentFromCollection(Equipment equipment)
+        {
+            NinjaEquipmentsCollection.Remove(new EquipmentVM(equipment));
+            UpdateNinjaEquipmentsCollection();
+        }
+
         private void OpenMarketView()
         {
             _marketPlaceView = new MarketPlaceView();
