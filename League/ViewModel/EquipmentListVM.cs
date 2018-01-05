@@ -3,6 +3,7 @@ using League.View;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,17 +24,31 @@ namespace League.ViewModel
         }
         public override void DeleteItem()
         {
+            DeleteAttachedNinjas();
             using (var context = new LeagueNinjasDBEntities())
             {
-                Equipment equipment = SelectedItem.ToModel();
-                context.Entry(equipment).State = EntityState.Modified;
-                context.SaveChanges();
+                Equipment equipment = context.Equipments.Find(SelectedItem.Id);
+                try
+                {
+                    context.Equipments.Remove(equipment);
+                    context.SaveChanges();
+                }
+                catch
+                {
 
-                context.Equipments.Attach(SelectedItem.ToModel());
-                context.Equipments.Remove(SelectedItem.ToModel());
-                context.SaveChanges();
+                }
             }
             ItemList.Remove(SelectedItem);
+        }
+
+        public void DeleteAttachedNinjas()
+        {
+            using (var context = new LeagueNinjasDBEntities())
+            {
+                context.Database.ExecuteSqlCommand("delete from dbo.NinjaInventory where " +
+                    "Equipment_Id = @id", new SqlParameter("id", SelectedItem.Id));
+                context.SaveChanges();
+            }
         }
 
         public override void HideAddWindow()
