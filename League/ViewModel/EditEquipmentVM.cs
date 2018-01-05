@@ -14,19 +14,15 @@ namespace League.ViewModel
     {
         public string ItemToEditCategory { get; set; }
         public List<Category> CategoryList { get; set; }
-        public List<string> CategoryNamesList { get; set; }
-        public string FirstCategory { get; set; }
+        public Category SelectedCategory { get; set; }
 
         public EditEquipmentVM(EquipmentVM Item) : base(Item)
         {
             using (var context = new LeagueNinjasDBEntities())
             {
                 CategoryList = context.Categories.ToList();
-
-                CategoryNamesList = CategoryList.Select(c => c.Name).ToList();
+                SelectedCategory = context.Categories.Find(ItemToBeEdited.Category);
             }
-
-            FirstCategory = CategoryNamesList.First();
         }
 
         public override void EditItem(EditEquipmentView window)
@@ -36,6 +32,7 @@ namespace League.ViewModel
                 using (var context = new LeagueNinjasDBEntities())
                 {
                     Equipment equipment = ItemToBeEdited.ToModel();
+                    ItemToBeEdited.Category = SelectedCategory.Name;
                     context.Entry(equipment).State = EntityState.Modified;
                     context.SaveChanges();
                 }
@@ -45,8 +42,7 @@ namespace League.ViewModel
 
         public override bool CanEdit()
         {
-            if(ItemToBeEdited.Name != "" 
-                && ItemToEditCategory == "" 
+            if(ItemToBeEdited.Name != null  
                 && ItemToBeEdited.Agility != 0
                 && ItemToBeEdited.Intelligence != 0 
                 && ItemToBeEdited.Price != 0
