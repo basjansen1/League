@@ -17,7 +17,6 @@ namespace League.ViewModel
         public EditNinjaVM(NinjaVM Item)
             : base(Item)
         {
-            MessageBox.Show("New EditNinjaWindow!");
         }
 
         public override void EditItem(EditNinjaView window)

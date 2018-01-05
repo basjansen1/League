@@ -31,9 +31,8 @@ namespace League.ViewModel
             {
                 using (var context = new LeagueNinjasDBEntities())
                 {
-                    Equipment equipment = ItemToBeEdited.ToModel();
                     ItemToBeEdited.Category = SelectedCategory.Name;
-                    context.Entry(equipment).State = EntityState.Modified;
+                    context.Entry(ItemToBeEdited.ToModel()).State = EntityState.Modified;
                     context.SaveChanges();
                 }
             }

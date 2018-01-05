@@ -25,6 +25,10 @@ namespace League.ViewModel
         {
             using (var context = new LeagueNinjasDBEntities())
             {
+                Equipment equipment = SelectedItem.ToModel();
+                context.Entry(equipment).State = EntityState.Modified;
+                context.SaveChanges();
+
                 context.Equipments.Attach(SelectedItem.ToModel());
                 context.Equipments.Remove(SelectedItem.ToModel());
                 context.SaveChanges();
@@ -61,7 +65,6 @@ namespace League.ViewModel
             using (var context = new LeagueNinjasDBEntities())
             {
                 returnList = context.Equipments.Where(i => i.Category.Equals(category)).ToList();
-               // list.ForEach(e => new EquipmentVM(e)); 
             }
 
             return returnList;

@@ -103,14 +103,6 @@ namespace League.ViewModel
             }
         }
 
-        public EditNinjaVM GetEditNinjaVM
-        {
-            get
-            {
-                return new EditNinjaVM(null);
-            }
-        }
-
         public EditNinjaVM getEditNinjaVM
         {
             get

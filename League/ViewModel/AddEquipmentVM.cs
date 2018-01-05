@@ -13,8 +13,7 @@ namespace League.ViewModel
     public class AddEquipmentVM : AddVM<EquipmentListVM, EquipmentVM>
     {
         public List<Category> CategoryList { get; set; }
-        public List<string> CategoryNamesList { get; set; }
-        public string FirstCategory { get; set; }
+        public Category SelectedCategory { get; set; }
 
         public AddEquipmentVM(EquipmentListVM ViewModelList)
             : base(ViewModelList)
@@ -25,11 +24,10 @@ namespace League.ViewModel
             using (var context = new LeagueNinjasDBEntities())
             {
                 CategoryList = context.Categories.ToList();
-
-                CategoryNamesList = CategoryList.Select(c => c.Name).ToList();
             }
 
-            FirstCategory = CategoryNamesList.First();
+            SelectedCategory = CategoryList.First();
+            NewItem.Category = SelectedCategory.Name;
         }
 
         public override void AddItem()
@@ -38,6 +36,7 @@ namespace League.ViewModel
             {
                 using (var context = new LeagueNinjasDBEntities())
                 {
+                    NewItem.Category = SelectedCategory.Name;
                     NewItem.Id = context.Equipments.Max(i => i.Id) + 1; // Get the highest ID and increment this
 
                     VMList.ItemList.Add(NewItem);
@@ -51,7 +50,7 @@ namespace League.ViewModel
 
         public override bool CanAdd()
         {
-            if (NewItem.Name == "")
+            if (NewItem.Name == null)
             {
                 MessageBox.Show("You have to give a name to the equipment!");
                 return false;
@@ -76,12 +75,8 @@ namespace League.ViewModel
                 MessageBox.Show("You have to assign a price value higher than 0");
                 return false;
             }
-            else if (NewItem.SetCategory(NewItem.Category) == false)
-            {
-                MessageBox.Show("This category does not exist!");
-                return false;
-            }
-            else if (NewItem.Category == "")
+            
+            else if (NewItem.Category == null)
             {
                 MessageBox.Show("You have to assign a category ");
                 return false;
