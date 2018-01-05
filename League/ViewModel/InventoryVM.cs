@@ -18,7 +18,7 @@ namespace League.ViewModel
         private MarketPlaceView _marketPlaceView;
 
         public NinjaVM SelectedNinja { get; set; }
-
+        public EquipmentVM SelectedEquipment { get; set; }
         public ICommand GoToMarketCommand { get; set; }
         public ICommand SellAllItemsCommand { get; set; }
         public ICommand SellEquipmentCommand { get; set; }
@@ -92,9 +92,9 @@ namespace League.ViewModel
             UpdateNinjaEquipmentsCollection();
         }
 
-        public void RemoveEquipmentFromCollection(Equipment equipment)
+        public void RemoveEquipmentFromCollection()
         {
-            NinjaEquipmentsCollection.Remove(new EquipmentVM(equipment));
+            NinjaEquipmentsCollection.Remove(SelectedEquipment);
             UpdateNinjaEquipmentsCollection();
         }
 
