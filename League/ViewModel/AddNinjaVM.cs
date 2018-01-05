@@ -51,7 +51,7 @@ namespace League.ViewModel
 
         public override bool CanAdd()
         {
-            if (NewItem.Name != "")
+            if (NewItem.Name != null)
                 return true;
             else
             {

@@ -32,10 +32,7 @@ namespace League.ViewModel
             SellEquipmentCommand = new SellEquipmentCommand(this);
             GoToMarketCommand = new RelayCommand(OpenMarketView);
             NinjaEquipmentsCollection = new ObservableCollection<EquipmentVM>();
-            using (var context = new LeagueNinjasDBEntities())
-            {
-                SelectedNinja.ToModel().Equipments.Select(e => new EquipmentVM(e)).ToList().ForEach(e => NinjaEquipmentsCollection.Add(e));
-            }
+            UpdateNinjaEquipmentsCollection();
         }
 
         public int GetTotalStrenght
@@ -80,6 +77,10 @@ namespace League.ViewModel
 
         public void UpdateNinjaEquipmentsCollection()
         {
+            using (var context = new LeagueNinjasDBEntities())
+            {
+                context.Ninjas.Find(SelectedNinja.Id).Equipments.Select(e => new EquipmentVM(e)).ToList().ForEach(e => NinjaEquipmentsCollection.Add(e));
+            }
             RaisePropertyChanged(() => GetTotalStrenght);
             RaisePropertyChanged(() => GetTotalInteligence);
             RaisePropertyChanged(() => GetTotalAgility);

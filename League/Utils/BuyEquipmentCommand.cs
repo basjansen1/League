@@ -60,14 +60,15 @@ namespace League.Utils
         {
             using (var context = new LeagueNinjasDBEntities())
             {
-                var ninja = context.Ninjas.Find(_marketPlace.NinjaList.SelectedItem.Id); // get selected ninja
-                var equipment = _marketPlace.EquipmentList.SelectedItem.ToModel();
+                Ninja ninja = context.Ninjas.Find(_marketPlace.NinjaList.SelectedItem.Id); // get selected ninja
+                Equipment equipment = _marketPlace.EquipmentList.SelectedItem.ToModel();
                 ninja.Equipments.Add(context.Equipments.Find(equipment.Id));
-
                 _marketPlace.NinjaList.SelectedItem.AmountOfGold -= _marketPlace.EquipmentList.SelectedItem.Price;
+                ninja.AmountGold -= _marketPlace.EquipmentList.SelectedItem.Price;
+
                 context.Entry(ninja).State = EntityState.Modified;
-                
                 context.SaveChanges();
+
                 _marketPlace.Inventory.AddEquipmentToCollection(equipment);
             }
         }
