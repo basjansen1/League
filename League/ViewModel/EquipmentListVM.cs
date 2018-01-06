@@ -34,12 +34,11 @@ namespace League.ViewModel
                 {
                     context.Equipments.Remove(equipment);
                     context.SaveChanges();
-                }
-                catch
-                 {
 
-                 }
-             }
+                    MessageBox.Show("Equipment is verwijderd!");
+                }
+                catch {}
+            }
             ItemList.Remove(SelectedItem);
         }
 
