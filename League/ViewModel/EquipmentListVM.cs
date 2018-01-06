@@ -33,17 +33,12 @@ namespace League.ViewModel
                 try
                 {
                     context.Equipments.Remove(equipment);
-                    // context.SaveChanges();
+                    context.SaveChanges();
                 }
                 catch
                  {
 
                  }
-
-            //poging 2
-            //context.Equipments.Attach(SelectedItem.ToModel());
-            //context.Equipments.Remove(SelectedItem.ToModel());
-            //context.SaveChanges();
              }
             ItemList.Remove(SelectedItem);
         }
