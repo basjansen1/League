@@ -77,6 +77,7 @@ namespace League.ViewModel
 
         public void UpdateNinjaEquipmentsCollection()
         {
+            NinjaEquipmentsCollection.Clear();
             using (var context = new LeagueNinjasDBEntities())
             {
                 context.Ninjas.Find(SelectedNinja.Id).Equipments.Select(e => new EquipmentVM(e)).ToList().ForEach(e => NinjaEquipmentsCollection.Add(e));

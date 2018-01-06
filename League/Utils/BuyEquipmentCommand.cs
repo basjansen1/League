@@ -60,13 +60,12 @@ namespace League.Utils
         {
             using (var context = new LeagueNinjasDBEntities())
             {
-                Ninja ninja = context.Ninjas.Find(_marketPlace.NinjaList.SelectedItem.Id); // get selected ninja
-                Equipment equipment = _marketPlace.EquipmentList.SelectedItem.ToModel(); // get selected equipment
-                ninja.Equipments.Add(context.Equipments.Find(equipment.Id));
+                NinjaVM ninja = _marketPlace.NinjaList.SelectedItem;
+                context.Ninjas.Attach(ninja.ToModel());
+                Equipment equipment = _marketPlace.EquipmentList.SelectedItem.ToModel();
+                ninja.ToModel().Equipments.Add(context.Equipments.Find(equipment.Id));
                 _marketPlace.NinjaList.SelectedItem.AmountOfGold -= _marketPlace.EquipmentList.SelectedItem.Price;
-                ninja.AmountGold -= _marketPlace.EquipmentList.SelectedItem.Price;
-
-                context.Entry(ninja).State = EntityState.Modified;
+                context.Entry(ninja.ToModel()).State = EntityState.Modified;
                 context.SaveChanges();
 
                 _marketPlace.Inventory.AddEquipmentToCollection(equipment);

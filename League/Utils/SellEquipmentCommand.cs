@@ -7,6 +7,7 @@ using League.ViewModel;
 using System.Windows.Input;
 using League.Model;
 using System.Data.Entity;
+using System.Windows;
 
 namespace League.Utils
 {
@@ -44,6 +45,7 @@ namespace League.Utils
                 context.Ninjas.Attach(_inventoryVM.SelectedNinja.ToModel());
                 _inventoryVM.SelectedNinja.AmountOfGold += _inventoryVM.SelectedEquipment.Price;
                 Equipment equipmentToDelete = context.Equipments.Find(_inventoryVM.SelectedEquipment.Id);
+                MessageBox.Show((_inventoryVM.SelectedNinja.ToModel().Equipments.Contains(equipmentToDelete)).ToString());
                 _inventoryVM.SelectedNinja.ToModel().Equipments.Remove(equipmentToDelete);
                 context.Entry(_inventoryVM.SelectedNinja.ToModel()).State = EntityState.Modified;
                 context.SaveChanges();
