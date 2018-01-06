@@ -32,16 +32,23 @@ namespace League.Utils
 
         public void Execute(object parameter)
         {
-          //  EquipmentVM oldEquipmentVM = (EquipmentVM)parameter;
-
             using (var context = new LeagueNinjasDBEntities())
             {
                 //  var ninjaEquipments = context.Ninjas.Where(n => n.Equals(_inventoryVM.SelectedNinja.ToModel())).First().Equipments.Remove(oldEquipmentVM.ToModel());
+
+                // _inventoryVM.SelectedNinja.AmountOfGold += _inventoryVM.SelectedEquipment.Price;
+                //_inventoryVM.SelectedNinja.ToModel().Equipments.Remove(_inventoryVM.SelectedEquipment.ToModel());
+                // context.Entry(_inventoryVM.SelectedNinja.ToModel()).State = EntityState.Modified;
+                // context.SaveChanges();
+
+                context.Ninjas.Attach(_inventoryVM.SelectedNinja.ToModel());
                 _inventoryVM.SelectedNinja.AmountOfGold += _inventoryVM.SelectedEquipment.Price;
-               _inventoryVM.SelectedNinja.ToModel().Equipments.Remove(_inventoryVM.SelectedEquipment.ToModel());
+                Equipment equipmentToDelete = context.Equipments.Find(_inventoryVM.SelectedEquipment.Id);
+                _inventoryVM.SelectedNinja.ToModel().Equipments.Remove(equipmentToDelete);
                 context.Entry(_inventoryVM.SelectedNinja.ToModel()).State = EntityState.Modified;
                 context.SaveChanges();
             }
+
             _inventoryVM.RemoveEquipmentFromCollection();
         }
     }
