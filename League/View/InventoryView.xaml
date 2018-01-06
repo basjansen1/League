@@ -29,6 +29,7 @@
         </DataGrid>
         <Separator></Separator>
 
+        <Button FontSize="15" Background="#FFFA5100" Command="{Binding SellAllItemsCommand}">Sell All Items</Button>
         <TextBlock FontSize="17">Total values</TextBlock>
         <TextBlock Text="{Binding Path=GetTotalStrenght, StringFormat='Strength: {0}'}" />
         <TextBlock Text="{Binding Path=GetTotalAgility, StringFormat='Agility: {0}'}" />

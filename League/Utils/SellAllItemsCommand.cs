@@ -1,9 +1,11 @@
 ﻿using League.Model;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 
 namespace League.ViewModel
@@ -17,29 +19,28 @@ namespace League.ViewModel
             _inventoryVM = inventoryVM;
         }
 
-        public event EventHandler CanExecuteChanged;
+        public event EventHandler CanExecuteChanged
+        {
+            add { CommandManager.RequerySuggested += value; }
+            remove { CommandManager.RequerySuggested -= value; }
+        }
 
         public bool CanExecute(object parameter)
         {
-            using (var context = new LeagueNinjasDBEntities())
-            {
-               return context.Ninjas.Where(n => n.Equals(_inventoryVM.SelectedNinja.ToModel())).First().Equipments.Count != 0;
-            }
+            return _inventoryVM.SelectedNinja.ToModel().Equipments.Count() != 0;
         }
 
         public void Execute(object parameter)
         {
             using (var context = new LeagueNinjasDBEntities())
             {
-                var ninjaEquipments = context.Ninjas.Where(n => n.Equals(_inventoryVM.SelectedNinja.ToModel())).First().Equipments.ToList();
-
-                foreach(Equipment e in ninjaEquipments)
-                {
-                    ninjaEquipments.Remove(e);
-                }
-
+                context.Ninjas.Attach(_inventoryVM.SelectedNinja.ToModel());
+                _inventoryVM.SelectedNinja.ToModel().Equipments.ToList().ForEach(e => _inventoryVM.SelectedNinja.AmountOfGold += e.Price);
+                context.Ninjas.Find(_inventoryVM.SelectedNinja.Id).Equipments.Clear();
+                context.Entry(_inventoryVM.SelectedNinja.ToModel()).State = EntityState.Modified;
                 context.SaveChanges();
             }
+            _inventoryVM.UpdateNinjaEquipmentsCollection();
         }
     }
 }
