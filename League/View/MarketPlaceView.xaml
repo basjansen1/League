@@ -74,9 +74,13 @@
         <!-- Stackpanel voor het kopen van een item -->
         <StackPanel Width="300">
             <TextBlock FontSize="30">Selected Equipment</TextBlock>
+            <TextBlock FontSize="12">Name:</TextBlock>
             <TextBlock Text="{Binding Path=EquipmentList.SelectedItem.Name, UpdateSourceTrigger=PropertyChanged}" />
+            <TextBlock FontSize="12">Strength:</TextBlock>
             <TextBlock Text="{Binding Path=EquipmentList.SelectedItem.Strength, UpdateSourceTrigger=PropertyChanged}" />
+            <TextBlock FontSize="12">Agility:</TextBlock>
             <TextBlock Text="{Binding Path=EquipmentList.SelectedItem.Agility, UpdateSourceTrigger=PropertyChanged}" />
+            <TextBlock FontSize="12">Price:</TextBlock>
             <TextBlock Text="{Binding Path=EquipmentList.SelectedItem.Price, UpdateSourceTrigger=PropertyChanged}" />
             <Button Command="{Binding BuyEquipmentCommand}">Buy</Button>
             <TextBlock Text="Gold left:" />

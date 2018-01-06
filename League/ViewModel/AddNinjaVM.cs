@@ -26,7 +26,13 @@ namespace League.ViewModel
             {
                 using (var context = new LeagueNinjasDBEntities())
                 {
-                    NewItem.Id = context.Ninjas.Max(i => i.Id) + 1; // Get the highest ID and increment this
+                    if (context.Ninjas.Count() != 0)
+                    {
+                        NewItem.Id = context.Ninjas.Max(i => i.Id) + 1; // Get the highest ID and increment this
+                    } else
+                    {
+                        NewItem.Id = 1;
+                    }
                     
                     VMList.ItemList.Add(NewItem);
                     context.Ninjas.Add(NewItem.ToModel());

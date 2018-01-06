@@ -7,6 +7,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace League.ViewModel
 {
@@ -27,17 +28,23 @@ namespace League.ViewModel
             DeleteAttachedNinjas();
             using (var context = new LeagueNinjasDBEntities())
             {
+                //poging 1
                 Equipment equipment = context.Equipments.Find(SelectedItem.Id);
                 try
                 {
                     context.Equipments.Remove(equipment);
-                    context.SaveChanges();
+                    // context.SaveChanges();
                 }
                 catch
-                {
+                 {
 
-                }
-            }
+                 }
+
+            //poging 2
+            //context.Equipments.Attach(SelectedItem.ToModel());
+            //context.Equipments.Remove(SelectedItem.ToModel());
+            //context.SaveChanges();
+             }
             ItemList.Remove(SelectedItem);
         }
 

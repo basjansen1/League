@@ -29,7 +29,7 @@ namespace League.Utils
         {
             using (var context = new LeagueNinjasDBEntities())
             {
-                if (_marketPlace.EquipmentList.SelectedItem != null)
+                if (_marketPlace.EquipmentList.SelectedItem != null && _marketPlace.NinjaList.SelectedItem != null)
                 {
 
                     var ninja = context.Ninjas.Find(_marketPlace.NinjaList.SelectedItem.Id);

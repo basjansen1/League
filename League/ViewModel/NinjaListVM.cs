@@ -4,6 +4,7 @@ using League.View;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -31,14 +32,25 @@ namespace League.ViewModel
 
         public override void DeleteItem()
         {
+            DeleteAttachedEquipments();
             using (var context = new LeagueNinjasDBEntities())
             {
-                context.Ninjas.Attach(SelectedItem.ToModel()); 
+                context.Ninjas.Attach(SelectedItem.ToModel());
                 context.Ninjas.Remove(SelectedItem.ToModel());
                 context.SaveChanges();
             }
 
             ItemList.Remove(SelectedItem);
+        }
+
+        public void DeleteAttachedEquipments()
+        {
+            using (var context = new LeagueNinjasDBEntities())
+            {
+                context.Database.ExecuteSqlCommand("delete from dbo.NinjaInventory where " +
+                    "Ninja_Id = @id", new SqlParameter("id", SelectedItem.Id));
+                context.SaveChanges();
+            }
         }
 
         public override void ShowAddWindow()
